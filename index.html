@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Rowyn's Dosing Guide</title>
+
+<!-- Home screen app meta tags (iOS) -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Rowyn Dose">
+
+<!-- Home screen app meta tags (Android/Chrome) -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1a1a2e">
+
+<!-- Home screen icon (inline SVG as data URI — blue syringe on white) -->
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiB2aWV3Qm94PSIwIDAgMTgwIDE4MCI+PHJlY3Qgd2lkdGg9IjE4MCIgaGVpZ2h0PSIxODAiIHJ4PSI0MCIgZmlsbD0iIzI1NjNlYiIvPjx0ZXh0IHg9IjkwIiB5PSIxMTUiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOTAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5BPC90ZXh0Pjwvc3ZnPg==">
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html { height: 100%; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f8f9fa; color: #333;
+    padding: 24px;
+    padding-top: max(24px, env(safe-area-inset-top, 24px));
+    padding-bottom: max(24px, env(safe-area-inset-bottom, 24px));
+    min-height: 100%;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 22px; color: #1a1a2e; margin-bottom: 4px; }
+  .subtitle { color: #666; font-size: 14px; margin-bottom: 24px; }
+  .disclaimer { background: #fff3cd; border: 1px solid #ffc107; border-radius: 8px; padding: 12px 16px; font-size: 13px; color: #856404; margin-bottom: 24px; line-height: 1.5; }
+
+  .card { background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 24px; margin-bottom: 20px; }
+  .card h2 { font-size: 16px; color: #1a1a2e; margin-bottom: 16px; }
+
+  /* Collapsible sections */
+  .collapsible-toggle { display: none; }
+  .collapsible-header {
+    display: flex; align-items: center; justify-content: space-between;
+    cursor: pointer; -webkit-user-select: none; user-select: none;
+  }
+  .collapsible-header::after {
+    content: '\25BC'; font-size: 12px; color: #999; transition: transform 0.2s;
+  }
+  .collapsible-toggle:checked + .card .collapsible-header::after,
+  .collapsible-toggle:checked + .collapsible-header::after {
+    transform: rotate(-180deg);
+  }
+  .collapsible-body { display: none; margin-top: 16px; }
+  .collapsible-toggle:checked ~ .card .collapsible-body,
+  .collapsible-toggle:checked + .collapsible-header + .collapsible-body {
+    display: block;
+  }
+  /* Calculator card always visible */
+  .calc-card .collapsible-body { display: block !important; }
+
+  /* Chart */
+  .chart-container { position: relative; width: 100%; height: 320px; margin-bottom: 8px; }
+  .chart-svg { width: 100%; height: 100%; }
+  .chart-note { font-size: 12px; color: #999; text-align: center; }
+
+  /* Correction table */
+  .correction-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .correction-table th { background: #f0f4f8; padding: 10px 12px; text-align: left; font-weight: 600; border-bottom: 2px solid #dee2e6; }
+  .correction-table td { padding: 10px 12px; border-bottom: 1px solid #eee; }
+  .correction-table tr:hover { background: #f8f9ff; }
+  .time-cell { font-weight: 600; white-space: nowrap; }
+  .isf-cell { font-weight: 600; color: #2563eb; }
+  .warning-row { background: #fff5f5; }
+  .warning-row:hover { background: #fff0f0; }
+  .warning-badge { display: inline-block; background: #ef4444; color: white; font-size: 11px; padding: 2px 6px; border-radius: 4px; margin-left: 6px; font-weight: 600; }
+  .caution-badge { display: inline-block; background: #f59e0b; color: white; font-size: 11px; padding: 2px 6px; border-radius: 4px; margin-left: 6px; font-weight: 600; }
+  .sample-note { font-size: 11px; color: #999; }
+
+  /* Calculator — mobile-first */
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+  .calc-field label { display: block; font-size: 13px; color: #666; margin-bottom: 4px; font-weight: 500; }
+  .calc-field select, .calc-field input {
+    width: 100%; padding: 14px 12px; border: 1px solid #ddd; border-radius: 10px;
+    font-size: 18px; background: #f8f9fa;
+    -webkit-appearance: none; appearance: none;
+  }
+  .calc-field select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23666'%3E%3Cpath d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 12px center;
+    padding-right: 32px;
+  }
+  .calc-field input:focus, .calc-field select:focus { outline: none; border-color: #2563eb; background: white; }
+  .calc-result { background: #f0f7ff; border: 2px solid #2563eb; border-radius: 12px; padding: 20px; text-align: center; }
+  .calc-result .big-number { font-size: 36px; font-weight: 700; color: #2563eb; }
+  .calc-result .unit { font-size: 16px; color: #666; }
+  .calc-result .detail { font-size: 13px; color: #888; margin-top: 8px; }
+  .calc-warning { background: #fff5f5; border: 2px solid #ef4444; border-radius: 12px; padding: 16px; text-align: center; margin-top: 12px; }
+  .calc-warning .msg { font-size: 14px; color: #dc2626; font-weight: 600; line-height: 1.5; }
+
+  /* Key insight */
+  .insight { background: linear-gradient(135deg, #eff6ff, #f0f7ff); border-left: 4px solid #2563eb; padding: 16px 20px; border-radius: 0 8px 8px 0; margin-bottom: 20px; }
+  .insight h3 { font-size: 14px; color: #1e40af; margin-bottom: 6px; }
+  .insight p { font-size: 13px; color: #444; line-height: 1.6; }
+
+  /* Quick-nav buttons (mobile) */
+  .quick-nav { display: none; }
+
+  /* Mobile overrides */
+  @media (max-width: 600px) {
+    body { padding: 16px; padding-top: max(16px, env(safe-area-inset-top, 16px)); }
+    h1 { font-size: 20px; }
+    .calc-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .card { padding: 18px; }
+    .correction-table { font-size: 12px; }
+    .correction-table th, .correction-table td { padding: 8px 6px; }
+    .chart-container { height: 240px; }
+
+    /* Show mobile nav */
+    .quick-nav {
+      display: flex; gap: 8px; margin-bottom: 20px; overflow-x: auto;
+      -webkit-overflow-scrolling: touch; padding-bottom: 4px;
+    }
+    .quick-nav a {
+      flex-shrink: 0; padding: 8px 14px; background: white; border-radius: 20px;
+      font-size: 13px; font-weight: 600; color: #2563eb; text-decoration: none;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1); white-space: nowrap;
+    }
+    .quick-nav a.primary { background: #2563eb; color: white; }
+
+    /* Auto-detect time and scroll calc into view */
+    .time-hint { display: block; }
+  }
+
+  @media (min-width: 601px) {
+    .time-hint { display: none; }
+  }
+
+  /* Smooth scrolling */
+  html { scroll-behavior: smooth; }
+
+  /* Last updated badge */
+  .updated-badge { font-size: 11px; color: #999; margin-top: 24px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Rowyn's Insulin Dosing Guide</h1>
+  <p class="subtitle">Based on Dexcom Clarity data, April 13–19, 2026 &middot; Correction factor + carb ratios from real meal responses</p>
+
+  <!-- Quick nav for mobile -->
+  <nav class="quick-nav">
+    <a href="#calculator" class="primary">Calculator</a>
+    <a href="#icr-table">Carb Ratios</a>
+    <a href="#isf-chart">ISF Chart</a>
+    <a href="#correction-ref">Correction Ref</a>
+  </nav>
+
+  <div class="disclaimer">
+    <strong>For discussion with your endocrinologist only.</strong> These estimates are based on 8 days of data with limited samples per time window. They should be used as a conversation starter with Rowyn's care team, not as a dosing guide on their own.
+  </div>
+
+  <!-- Key insight -->
+  <div class="insight">
+    <h3>Honeymoon Update — Sensitivity Is Increasing</h3>
+    <p>Rowyn is becoming more sensitive to insulin, especially in the <strong>afternoon</strong> (2–5 PM) where 0.5u now drops her ~38 mg/dL — nearly double what it was earlier. The evening is also more sensitive than before. <strong>Be cautious with afternoon and evening doses to avoid lows.</strong> Breakfast remains resistant, but is improving slightly. These numbers will keep shifting — plan to recheck weekly.</p>
+  </div>
+
+  <!-- Chart -->
+  <div class="card" id="isf-chart">
+    <h2>BG Drop per 0.5u of Fast-Acting Insulin</h2>
+    <p style="font-size:12px; color:#666; margin-bottom:12px;">Updated Apr 19 — recency-weighted. Notice how afternoon sensitivity has jumped significantly.</p>
+    <div class="chart-container">
+      <svg class="chart-svg" viewBox="0 0 700 300" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#3b82f6"/>
+            <stop offset="100%" stop-color="#2563eb"/>
+          </linearGradient>
+          <linearGradient id="barWarn" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#f87171"/>
+            <stop offset="100%" stop-color="#ef4444"/>
+          </linearGradient>
+          <linearGradient id="barHot" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#34d399"/>
+            <stop offset="100%" stop-color="#059669"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Y axis: 0 to 40 mg/dL per 0.5u. Scale: 0=y240, 40=y40. Each 10=50px -->
+        <line x1="100" y1="40" x2="650" y2="40" stroke="#eee" stroke-width="1"/>
+        <line x1="100" y1="90" x2="650" y2="90" stroke="#eee" stroke-width="1"/>
+        <line x1="100" y1="140" x2="650" y2="140" stroke="#eee" stroke-width="1"/>
+        <line x1="100" y1="190" x2="650" y2="190" stroke="#eee" stroke-width="1"/>
+        <line x1="100" y1="240" x2="650" y2="240" stroke="#999" stroke-width="1.5"/>
+
+        <text x="95" y="44" text-anchor="end" font-size="11" fill="#999">40</text>
+        <text x="95" y="94" text-anchor="end" font-size="11" fill="#999">30</text>
+        <text x="95" y="144" text-anchor="end" font-size="11" fill="#999">20</text>
+        <text x="95" y="194" text-anchor="end" font-size="11" fill="#999">10</text>
+        <text x="95" y="244" text-anchor="end" font-size="11" fill="#999">0</text>
+
+        <text x="18" y="150" text-anchor="middle" font-size="11" fill="#666" transform="rotate(-90, 18, 150)">mg/dL drop per 0.5u</text>
+
+        <!-- Breakfast (5-10 AM): ISF=30, per 0.5u=15 — still weak -->
+        <!-- 15 on scale: y = 240 - (15/40)*200 = 240 - 75 = 165 -->
+        <rect x="115" y="165" width="80" height="75" rx="4" fill="url(#barWarn)" opacity="0.8"/>
+        <text x="155" y="158" text-anchor="middle" font-size="13" fill="#ef4444" font-weight="600">15*</text>
+        <text x="155" y="268" text-anchor="middle" font-size="11" fill="#dc2626" font-weight="700">5-10am</text>
+        <text x="155" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=7</text>
+
+        <!-- Lunch (10-2): ISF=60, per 0.5u=30 -->
+        <!-- y = 240 - (30/40)*200 = 240-150 = 90 -->
+        <rect x="225" y="90" width="80" height="150" rx="4" fill="url(#barGrad)"/>
+        <text x="265" y="83" text-anchor="middle" font-size="13" fill="#2563eb" font-weight="600">30</text>
+        <text x="265" y="268" text-anchor="middle" font-size="11" fill="#666">10am-2pm</text>
+        <text x="265" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=7</text>
+
+        <!-- Afternoon (2-5): ISF=75, per 0.5u=37.5 — MOST SENSITIVE -->
+        <!-- y = 240 - (37.5/40)*200 = 240-187.5 = 52 -->
+        <rect x="335" y="52" width="80" height="188" rx="4" fill="url(#barHot)"/>
+        <text x="375" y="45" text-anchor="middle" font-size="13" fill="#059669" font-weight="600">38</text>
+        <text x="375" y="268" text-anchor="middle" font-size="11" fill="#059669" font-weight="700">2-5pm</text>
+        <text x="375" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=6</text>
+
+        <!-- Dinner (5-9): ISF=40, per 0.5u=20 -->
+        <!-- y = 240 - (20/40)*200 = 240-100 = 140 -->
+        <rect x="445" y="140" width="80" height="100" rx="4" fill="url(#barGrad)"/>
+        <text x="485" y="133" text-anchor="middle" font-size="13" fill="#2563eb" font-weight="600">20</text>
+        <text x="485" y="268" text-anchor="middle" font-size="11" fill="#666">5-9pm</text>
+        <text x="485" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=7</text>
+
+        <!-- Night (9+): ISF=80, per 0.5u=40 -->
+        <!-- y = 240 - (40/40)*200 = 240-200 = 40 -->
+        <rect x="555" y="40" width="80" height="200" rx="4" fill="url(#barGrad)" opacity="0.7"/>
+        <text x="595" y="33" text-anchor="middle" font-size="13" fill="#2563eb" font-weight="600">40</text>
+        <text x="595" y="268" text-anchor="middle" font-size="11" fill="#666">9pm+</text>
+        <text x="595" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=3</text>
+
+        <!-- Annotations -->
+        <rect x="110" y="4" width="90" height="18" rx="4" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
+        <text x="155" y="16" text-anchor="middle" font-size="9" fill="#dc2626" font-weight="600">RESISTANT</text>
+
+        <rect x="325" y="4" width="102" height="18" rx="4" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1"/>
+        <text x="376" y="16" text-anchor="middle" font-size="9" fill="#059669" font-weight="600">MOST SENSITIVE</text>
+      </svg>
+    </div>
+    <p class="chart-note">* Breakfast ISF is an estimate — corrections are unreliable in this window due to morning hormones. The green afternoon bar reflects the honeymoon increase in sensitivity.</p>
+  </div>
+
+  <!-- Correction Reference Table -->
+  <div class="card">
+    <h2>Correction Reference: How Much Fast-Acting to Reach ~150 mg/dL</h2>
+    <table class="correction-table">
+      <thead>
+        <tr>
+          <th>Time of Day</th>
+          <th>0.5u Drops</th>
+          <th>From 250</th>
+          <th>From 300</th>
+          <th>From 350</th>
+          <th>From 400</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="warning-row">
+          <td class="time-cell">8–10 AM <span class="warning-badge">RESISTANT</span></td>
+          <td class="isf-cell" style="color:#ef4444">~0*</td>
+          <td colspan="4" style="font-size:13px; color:#dc2626; font-style:italic;">Corrections alone don't work well here — needs tighter ICR + pre-bolus. Discuss with endo.</td>
+        </tr>
+        <tr>
+          <td class="time-cell">10 AM – 12 PM</td>
+          <td class="isf-cell">~32 mg/dL</td>
+          <td>1.5u</td>
+          <td>2.5u</td>
+          <td>3.0u</td>
+          <td>4.0u</td>
+        </tr>
+        <tr>
+          <td class="time-cell">12 – 3 PM</td>
+          <td class="isf-cell">~30 mg/dL</td>
+          <td>1.5u</td>
+          <td>2.5u</td>
+          <td>3.5u</td>
+          <td>4.0u</td>
+        </tr>
+        <tr>
+          <td class="time-cell">3 – 5 PM</td>
+          <td class="isf-cell">~24 mg/dL</td>
+          <td>2.0u</td>
+          <td>3.0u</td>
+          <td>4.0u</td>
+          <td>5.0u</td>
+        </tr>
+        <tr>
+          <td class="time-cell">5 – 8 PM <span class="caution-badge">YOUR EXAMPLE</span></td>
+          <td class="isf-cell">~28 mg/dL</td>
+          <td>2.0u</td>
+          <td>2.5u</td>
+          <td>3.5u</td>
+          <td>4.5u</td>
+        </tr>
+        <tr>
+          <td class="time-cell">8 – 11 PM</td>
+          <td class="isf-cell">~29 mg/dL</td>
+          <td>2.0u</td>
+          <td>2.5u</td>
+          <td>3.5u</td>
+          <td>4.5u</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px; color:#999; margin-top:12px;">
+      Target: 150 mg/dL. Doses rounded to nearest 0.5u. These are <em>correction-only</em> estimates — add meal insulin (ICR) on top if she's also eating.
+    </p>
+  </div>
+
+  <!-- ICR Reference Table -->
+  <div class="card" id="icr-table">
+    <h2>Insulin-to-Carb Ratio (ICR) by Time of Day</h2>
+    <p style="font-size:13px; color:#666; margin-bottom:16px;">Updated April 19 — recency-weighted from the past week. Rowyn is becoming more insulin sensitive (honeymoon period), so recent meals count more heavily.</p>
+    <table class="correction-table">
+      <thead>
+        <tr>
+          <th>Time of Day</th>
+          <th>Recommended ICR</th>
+          <th>Trend</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="warning-row">
+          <td class="time-cell">Breakfast (5–10 AM) <span class="warning-badge">STILL RESISTANT</span></td>
+          <td class="isf-cell" style="color:#ef4444">~12g : 1u</td>
+          <td style="font-size:12px;">Improving</td>
+          <td style="font-size:12px;">Still spikes every AM but Apr 18 at 15g:1u only rose +82 (vs +200 earlier). Moving toward ~12g:1u. Pre-bolus still key.</td>
+        </tr>
+        <tr>
+          <td class="time-cell">Lunch (10 AM – 2 PM) <span class="caution-badge">MORE SENSITIVE</span></td>
+          <td class="isf-cell">~18g : 1u</td>
+          <td style="font-size:12px;">Loosening needed</td>
+          <td style="font-size:12px;">Apr 19 at 28g:1u crashed her 298→184. She's tolerating looser ratios now — ease from 16:1 to ~18g:1u and watch the nadir.</td>
+        </tr>
+        <tr>
+          <td class="time-cell">Afternoon (2–5 PM) <span class="caution-badge">MORE SENSITIVE</span></td>
+          <td class="isf-cell">~18g : 1u</td>
+          <td style="font-size:12px;">Loosening needed</td>
+          <td style="font-size:12px;">Apr 18: 3.5u for 34g (10g:1u) crashed her to 93. She's much more sensitive now — ease to ~18g:1u and watch carefully.</td>
+        </tr>
+        <tr>
+          <td class="time-cell">Dinner (5–9 PM) <span class="caution-badge">MORE SENSITIVE</span></td>
+          <td class="isf-cell">~20g : 1u</td>
+          <td style="font-size:12px;">Loosening needed</td>
+          <td style="font-size:12px;">Apr 17 dinner at 14g:1u dropped her 116. Recent evening doses are overcorrecting. Back off to ~20g:1u.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px; color:#999; margin-top:12px;">
+      ICR = grams of carbs covered by 1 unit. <strong>Lower number = more insulin per carb.</strong> For example, 16g:1u means 1 unit covers 16g of carbs, so a 48g meal needs 3 units.
+      <br><strong>Honeymoon note:</strong> These numbers are shifting — recheck weekly. The afternoon and evening are moving fastest toward higher sensitivity.
+    </p>
+  </div>
+
+  <!-- Combined Calculator -->
+  <div class="card calc-card" id="calculator">
+    <h2>Meal + Correction Calculator</h2>
+    <p style="font-size:13px; color:#666; margin-bottom:16px;">Enter what Rowyn is about to eat and her current BG to get a combined dose estimate.</p>
+    <div class="calc-grid" style="grid-template-columns: 1fr 1fr;">
+      <div class="calc-field">
+        <label>Carbs in meal (grams)</label>
+        <input type="number" id="mealCarbs" value="55" min="0" max="200" step="1">
+      </div>
+      <div class="calc-field">
+        <label>Current BG (mg/dL)</label>
+        <input type="number" id="currentBG" value="350" min="70" max="500" step="1">
+      </div>
+      <div class="calc-field">
+        <label>Target BG (mg/dL)</label>
+        <input type="number" id="targetBG" value="150" min="70" max="250" step="10">
+      </div>
+      <div class="calc-field">
+        <label>Time of Day</label>
+        <select id="timeOfDay">
+          <option value="breakfast">Breakfast (5–10 AM)</option>
+          <option value="lunch">Lunch (10 AM – 2 PM)</option>
+          <option value="afternoon">Afternoon (2–5 PM)</option>
+          <option value="dinner" selected>Dinner (5–9 PM)</option>
+          <option value="night">Night (8–11 PM)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Result breakdown -->
+    <div id="calcResult" style="background:#f0f7ff; border:2px solid #2563eb; border-radius:12px; padding:24px; margin-top:8px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; text-align:center;">
+        <div>
+          <div style="font-size:13px; color:#888; margin-bottom:4px;">Meal Dose</div>
+          <div id="mealDose" style="font-size:28px; font-weight:700; color:#059669;">3.5u</div>
+          <div id="mealDetail" style="font-size:11px; color:#999;">55g ÷ 15g:1u</div>
+        </div>
+        <div>
+          <div style="font-size:13px; color:#888; margin-bottom:4px;">Correction</div>
+          <div id="corrDose" style="font-size:28px; font-weight:700; color:#2563eb;">3.5u</div>
+          <div id="corrDetail" style="font-size:11px; color:#999;">200 ÷ 56 ISF</div>
+        </div>
+        <div style="border-left:2px solid #ddd; padding-left:16px;">
+          <div style="font-size:13px; color:#888; margin-bottom:4px;">Total Dose</div>
+          <div id="totalDose" style="font-size:36px; font-weight:700; color:#1a1a2e;">7.0u</div>
+          <div id="totalDetail" style="font-size:11px; color:#999;">meal + correction</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="calcWarning" class="calc-warning" style="display:none;">
+      <div class="msg"></div>
+    </div>
+
+    <div id="breakfastTip" style="display:none; background:#fff5f5; border:1px solid #fca5a5; border-radius:8px; padding:14px 16px; margin-top:12px;">
+      <p style="font-size:13px; color:#dc2626; line-height:1.6;"><strong>Breakfast note:</strong> The data shows morning insulin resistance is very high. The meal dose shown uses ~10g:1u (tighter than other meals). Consider also pre-bolusing 10–15 minutes before she eats, and possibly reducing breakfast carbs when feasible. The correction ISF shown is estimated — corrections alone don't reliably work in this window.</p>
+    </div>
+
+    <p style="font-size:12px; color:#999; margin-top:12px;">
+      Doses rounded to nearest 0.5u. This does <strong>not</strong> account for insulin on board (IOB) from previous doses — if she had fast-acting in the last 3–4 hours, subtract that active insulin from the correction portion.
+    </p>
+  </div>
+
+  <!-- Correction-only reference (kept for quick lookup) -->
+  <div class="card" id="correction-ref">
+    <h2>Quick Correction-Only Reference (no meal)</h2>
+    <p style="font-size:13px; color:#666; margin-bottom:12px;">If she's not eating and you just need to correct a high (updated Apr 19, honeymoon-adjusted):</p>
+    <table class="correction-table" style="font-size:13px;">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>ISF (1u drops)</th>
+          <th>From 250</th>
+          <th>From 300</th>
+          <th>From 350</th>
+          <th>From 400</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="warning-row">
+          <td class="time-cell">5–10 AM</td>
+          <td style="color:#ef4444; font-weight:600;">~30*</td>
+          <td>3.5u</td>
+          <td>5.0u</td>
+          <td>6.5u</td>
+          <td>8.5u</td>
+        </tr>
+        <tr><td class="time-cell">10 AM–2 PM</td><td class="isf-cell">~60</td><td>1.5u</td><td>2.5u</td><td>3.5u</td><td>4.0u</td></tr>
+        <tr><td class="time-cell">2–5 PM</td><td class="isf-cell">~75</td><td>1.5u</td><td>2.0u</td><td>2.5u</td><td>3.5u</td></tr>
+        <tr><td class="time-cell">5–9 PM</td><td class="isf-cell">~40</td><td>2.5u</td><td>4.0u</td><td>5.0u</td><td>6.5u</td></tr>
+        <tr><td class="time-cell">9 PM+</td><td class="isf-cell">~80</td><td>1.5u</td><td>2.0u</td><td>2.5u</td><td>3.0u</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px; color:#999; margin-top:8px;">Target: 150 mg/dL. ISF = mg/dL drop per 1 unit. *Morning ISF is unreliable — corrections compete with dawn hormones. Afternoon sensitivity has increased significantly during honeymoon.</p>
+  </div>
+
+  <div class="disclaimer" style="margin-top: 24px;">
+    <strong>Important:</strong> This analysis is based on ~40 fast-acting insulin events over 7 days. These numbers will become more reliable as you collect more data. Always verify dosing decisions with Rowyn's endocrinologist, especially given her young age and small size. Insulin stacking (dosing before a previous dose has finished working) is a real risk — most fast-acting insulin is active for 3–4 hours.
+  </div>
+
+  <p class="updated-badge">Updated April 19, 2026 &middot; Data from April 13–19 &middot; Recency-weighted for honeymoon shift &middot; Discuss changes with your endo</p>
+</div>
+
+<script>
+// Time-of-day profiles: ICR (g per unit) and ISF (mg/dL per unit)
+// Updated April 19 — recency-weighted from Apr 13-19 data
+// Reflects increasing sensitivity (honeymoon period)
+const profiles = {
+  breakfast:  { icr: 12, isf: 30,  label: 'Breakfast (5-10 AM)', resistant: true },
+  lunch:      { icr: 18, isf: 60,  label: 'Lunch (10 AM-2 PM)' },
+  afternoon:  { icr: 18, isf: 75,  label: 'Afternoon (2-5 PM)' },
+  dinner:     { icr: 20, isf: 40,  label: 'Dinner (5-9 PM)' },
+  night:      { icr: 20, isf: 80,  label: 'Night (9 PM+)' }
+};
+
+function roundHalf(n) {
+  return Math.round(n * 2) / 2;
+}
+
+function calculate() {
+  const carbs = parseFloat(document.getElementById('mealCarbs').value) || 0;
+  const currentBG = parseFloat(document.getElementById('currentBG').value) || 0;
+  const targetBG = parseFloat(document.getElementById('targetBG').value) || 150;
+  const timeKey = document.getElementById('timeOfDay').value;
+  const profile = profiles[timeKey];
+
+  const warningDiv = document.getElementById('calcWarning');
+  const breakfastTip = document.getElementById('breakfastTip');
+  warningDiv.style.display = 'none';
+  breakfastTip.style.display = profile.resistant ? 'block' : 'none';
+
+  // Meal dose
+  const mealUnitsRaw = carbs > 0 ? carbs / profile.icr : 0;
+  const mealUnits = roundHalf(mealUnitsRaw);
+
+  document.getElementById('mealDose').textContent = mealUnits.toFixed(1) + 'u';
+  document.getElementById('mealDetail').textContent =
+    carbs > 0 ? `${carbs}g ÷ ${profile.icr}g:1u` : 'No carbs entered';
+
+  // Correction dose
+  const bgDrop = currentBG - targetBG;
+  let corrUnitsRaw = 0;
+  let corrUnits = 0;
+
+  if (bgDrop > 0 && profile.isf > 0) {
+    corrUnitsRaw = bgDrop / profile.isf;
+    corrUnits = roundHalf(corrUnitsRaw);
+  }
+
+  document.getElementById('corrDose').textContent = corrUnits.toFixed(1) + 'u';
+  if (bgDrop <= 0) {
+    document.getElementById('corrDetail').textContent = 'BG at or below target';
+  } else if (profile.resistant) {
+    document.getElementById('corrDetail').textContent = `${bgDrop} ÷ ~${profile.isf}* ISF`;
+  } else {
+    document.getElementById('corrDetail').textContent = `${bgDrop} ÷ ${profile.isf} ISF`;
+  }
+
+  // Total
+  const totalRaw = mealUnitsRaw + corrUnitsRaw;
+  const total = roundHalf(totalRaw);
+
+  document.getElementById('totalDose').textContent = total.toFixed(1) + 'u';
+  document.getElementById('totalDetail').textContent =
+    `${mealUnits.toFixed(1)} meal + ${corrUnits.toFixed(1)} correction`;
+
+  // Warnings
+  const warnings = [];
+  if (total >= 5) {
+    warnings.push('This is a large dose for a small child. Please confirm with your endocrinologist. Watch closely for lows 2-4 hours later.');
+  }
+  if (corrUnits > 0 && profile.resistant) {
+    warnings.push('Morning corrections are unreliable based on the data. The correction portion is a rough estimate — the tighter ICR is doing most of the work here.');
+  }
+  if (currentBG < 100 && carbs > 0) {
+    warnings.push('BG is near or below low threshold. Consider giving carbs first and dosing after she starts eating.');
+  }
+
+  if (warnings.length > 0) {
+    warningDiv.style.display = 'block';
+    warningDiv.querySelector('.msg').innerHTML = warnings.map(w => '&#9888; ' + w).join('<br><br>');
+  }
+}
+
+// Attach listeners
+['mealCarbs', 'currentBG', 'targetBG'].forEach(id => {
+  document.getElementById(id).addEventListener('input', calculate);
+});
+document.getElementById('timeOfDay').addEventListener('change', calculate);
+
+// Auto-detect time of day and set dropdown
+function autoDetectTime() {
+  const hour = new Date().getHours();
+  const sel = document.getElementById('timeOfDay');
+  if (hour >= 5 && hour < 10) sel.value = 'breakfast';
+  else if (hour >= 10 && hour < 14) sel.value = 'lunch';
+  else if (hour >= 14 && hour < 17) sel.value = 'afternoon';
+  else if (hour >= 17 && hour < 21) sel.value = 'dinner';
+  else sel.value = 'night';
+}
+
+autoDetectTime();
+calculate();
+</script>
+</body>
+</html>
