@@ -107,9 +107,6 @@
   .insight h3 { font-size: 14px; color: #1e40af; margin-bottom: 6px; }
   .insight p { font-size: 13px; color: #444; line-height: 1.6; }
 
-  /* Quick-nav buttons (mobile) */
-  .quick-nav { display: none; }
-
   /* Mobile overrides */
   @media (max-width: 600px) {
     body { padding: 12px; padding-top: max(12px, env(safe-area-inset-top, 12px)); }
@@ -122,19 +119,6 @@
     /* Let the scroll area reach the card edges on narrow screens */
     .table-wrap { margin: 0 -14px; padding: 0 14px; }
 
-    /* Show mobile nav */
-    .quick-nav {
-      display: flex; gap: 8px; margin-bottom: 20px; overflow-x: auto;
-      -webkit-overflow-scrolling: touch; padding-bottom: 4px;
-    }
-    .quick-nav a {
-      flex-shrink: 0; padding: 8px 14px; background: white; border-radius: 20px;
-      font-size: 13px; font-weight: 600; color: #2563eb; text-decoration: none;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1); white-space: nowrap;
-    }
-    .quick-nav a.primary { background: #2563eb; color: white; }
-
-    /* Auto-detect time and scroll calc into view */
     .time-hint { display: block; }
   }
 
@@ -154,13 +138,68 @@
   <h1>Rowyn's Insulin Dosing Guide</h1>
   <p class="subtitle">Based on Dexcom Clarity data, April 14–21, 2026 &middot; Correction factor + carb ratios from real meal responses</p>
 
-  <!-- Quick nav for mobile -->
-  <nav class="quick-nav">
-    <a href="#calculator" class="primary">Calculator</a>
-    <a href="#icr-table">Carb Ratios</a>
-    <a href="#isf-chart">ISF Chart</a>
-    <a href="#correction-ref">Correction Ref</a>
-  </nav>
+  <!-- Combined Calculator -->
+  <div class="card calc-card" id="calculator">
+    <h2>Meal + Correction Calculator</h2>
+    <p style="font-size:13px; color:#666; margin-bottom:16px;">Enter what Rowyn is about to eat and her current BG to get a combined dose estimate.</p>
+    <div class="calc-grid" style="grid-template-columns: 1fr 1fr;">
+      <div class="calc-field">
+        <label>Carbs in meal (grams)</label>
+        <input type="number" id="mealCarbs" value="55" min="0" max="200" step="1">
+      </div>
+      <div class="calc-field">
+        <label>Current BG (mg/dL)</label>
+        <input type="number" id="currentBG" value="350" min="70" max="500" step="1">
+      </div>
+      <div class="calc-field">
+        <label>Target BG (mg/dL)</label>
+        <input type="number" id="targetBG" value="150" min="70" max="250" step="10">
+      </div>
+      <div class="calc-field">
+        <label>Time of Day</label>
+        <select id="timeOfDay">
+          <option value="breakfast">Breakfast (5–10 AM)</option>
+          <option value="lunch">Lunch (10 AM – 2 PM)</option>
+          <option value="afternoon">Afternoon (2–5 PM)</option>
+          <option value="dinner" selected>Dinner (5–9 PM)</option>
+          <option value="night">Night (8–11 PM)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Result breakdown -->
+    <div id="calcResult" style="background:#f0f7ff; border:2px solid #2563eb; border-radius:12px; padding:24px; margin-top:8px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; text-align:center;">
+        <div>
+          <div style="font-size:13px; color:#888; margin-bottom:4px;">Meal Dose</div>
+          <div id="mealDose" style="font-size:28px; font-weight:700; color:#059669;">3.5u</div>
+          <div id="mealDetail" style="font-size:11px; color:#999;">55g ÷ 15g:1u</div>
+        </div>
+        <div>
+          <div style="font-size:13px; color:#888; margin-bottom:4px;">Correction</div>
+          <div id="corrDose" style="font-size:28px; font-weight:700; color:#2563eb;">3.5u</div>
+          <div id="corrDetail" style="font-size:11px; color:#999;">200 ÷ 56 ISF</div>
+        </div>
+        <div style="border-left:2px solid #ddd; padding-left:16px;">
+          <div style="font-size:13px; color:#888; margin-bottom:4px;">Total Dose</div>
+          <div id="totalDose" style="font-size:36px; font-weight:700; color:#1a1a2e;">7.0u</div>
+          <div id="totalDetail" style="font-size:11px; color:#999;">meal + correction</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="calcWarning" class="calc-warning" style="display:none;">
+      <div class="msg"></div>
+    </div>
+
+    <div id="breakfastTip" style="display:none; background:#fff5f5; border:1px solid #fca5a5; border-radius:8px; padding:14px 16px; margin-top:12px;">
+      <p style="font-size:13px; color:#dc2626; line-height:1.6;"><strong>Breakfast note:</strong> The data shows morning insulin resistance is very high. The meal dose shown uses ~10g:1u (tighter than other meals). Consider also pre-bolusing 10–15 minutes before she eats, and possibly reducing breakfast carbs when feasible. The correction ISF shown is estimated — corrections alone don't reliably work in this window.</p>
+    </div>
+
+    <p style="font-size:12px; color:#999; margin-top:12px;">
+      Doses rounded to nearest 0.5u. This does <strong>not</strong> account for insulin on board (IOB) from previous doses — if she had fast-acting in the last 3–4 hours, subtract that active insulin from the correction portion.
+    </p>
+  </div>
 
   <!-- Chart -->
   <div class="card" id="isf-chart">
@@ -303,6 +342,41 @@
     </p>
   </div>
 
+  <!-- Correction-only reference (kept for quick lookup) -->
+  <div class="card" id="correction-ref">
+    <h2>Quick Correction-Only Reference (no meal)</h2>
+    <p style="font-size:13px; color:#666; margin-bottom:12px;">If she's not eating and you just need to correct a high (updated Apr 21):</p>
+    <div class="table-wrap">
+    <table class="correction-table" style="font-size:13px;">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>ISF (1u drops)</th>
+          <th>From 250</th>
+          <th>From 300</th>
+          <th>From 350</th>
+          <th>From 400</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="warning-row">
+          <td class="time-cell">5–10 AM</td>
+          <td style="color:#ef4444; font-weight:600;">~30*</td>
+          <td>3.5u</td>
+          <td>5.0u</td>
+          <td>6.5u</td>
+          <td>8.5u</td>
+        </tr>
+        <tr><td class="time-cell">10 AM–2 PM</td><td class="isf-cell">~60</td><td>1.5u</td><td>2.5u</td><td>3.5u</td><td>4.0u</td></tr>
+        <tr><td class="time-cell">2–5 PM</td><td class="isf-cell">~75</td><td>1.5u</td><td>2.0u</td><td>2.5u</td><td>3.5u</td></tr>
+        <tr><td class="time-cell">5–9 PM</td><td class="isf-cell">~40</td><td>2.5u</td><td>4.0u</td><td>5.0u</td><td>6.5u</td></tr>
+        <tr><td class="time-cell">9 PM+</td><td class="isf-cell">~80</td><td>1.5u</td><td>2.0u</td><td>2.5u</td><td>3.0u</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:11px; color:#999; margin-top:8px;">Target: 150 mg/dL. ISF = mg/dL drop per 1 unit. *Morning ISF is unreliable — corrections compete with dawn hormones.</p>
+  </div>
+
   <!-- ICR Reference Table -->
   <div class="card" id="icr-table">
     <h2>Insulin-to-Carb Ratio (ICR) by Time of Day</h2>
@@ -348,104 +422,6 @@
     <p style="font-size:12px; color:#999; margin-top:12px;">
       ICR = grams of carbs covered by 1 unit. <strong>Lower number = more insulin per carb.</strong> For example, 16g:1u means 1 unit covers 16g of carbs, so a 48g meal needs 3 units.
     </p>
-  </div>
-
-  <!-- Combined Calculator -->
-  <div class="card calc-card" id="calculator">
-    <h2>Meal + Correction Calculator</h2>
-    <p style="font-size:13px; color:#666; margin-bottom:16px;">Enter what Rowyn is about to eat and her current BG to get a combined dose estimate.</p>
-    <div class="calc-grid" style="grid-template-columns: 1fr 1fr;">
-      <div class="calc-field">
-        <label>Carbs in meal (grams)</label>
-        <input type="number" id="mealCarbs" value="55" min="0" max="200" step="1">
-      </div>
-      <div class="calc-field">
-        <label>Current BG (mg/dL)</label>
-        <input type="number" id="currentBG" value="350" min="70" max="500" step="1">
-      </div>
-      <div class="calc-field">
-        <label>Target BG (mg/dL)</label>
-        <input type="number" id="targetBG" value="150" min="70" max="250" step="10">
-      </div>
-      <div class="calc-field">
-        <label>Time of Day</label>
-        <select id="timeOfDay">
-          <option value="breakfast">Breakfast (5–10 AM)</option>
-          <option value="lunch">Lunch (10 AM – 2 PM)</option>
-          <option value="afternoon">Afternoon (2–5 PM)</option>
-          <option value="dinner" selected>Dinner (5–9 PM)</option>
-          <option value="night">Night (8–11 PM)</option>
-        </select>
-      </div>
-    </div>
-
-    <!-- Result breakdown -->
-    <div id="calcResult" style="background:#f0f7ff; border:2px solid #2563eb; border-radius:12px; padding:24px; margin-top:8px;">
-      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; text-align:center;">
-        <div>
-          <div style="font-size:13px; color:#888; margin-bottom:4px;">Meal Dose</div>
-          <div id="mealDose" style="font-size:28px; font-weight:700; color:#059669;">3.5u</div>
-          <div id="mealDetail" style="font-size:11px; color:#999;">55g ÷ 15g:1u</div>
-        </div>
-        <div>
-          <div style="font-size:13px; color:#888; margin-bottom:4px;">Correction</div>
-          <div id="corrDose" style="font-size:28px; font-weight:700; color:#2563eb;">3.5u</div>
-          <div id="corrDetail" style="font-size:11px; color:#999;">200 ÷ 56 ISF</div>
-        </div>
-        <div style="border-left:2px solid #ddd; padding-left:16px;">
-          <div style="font-size:13px; color:#888; margin-bottom:4px;">Total Dose</div>
-          <div id="totalDose" style="font-size:36px; font-weight:700; color:#1a1a2e;">7.0u</div>
-          <div id="totalDetail" style="font-size:11px; color:#999;">meal + correction</div>
-        </div>
-      </div>
-    </div>
-
-    <div id="calcWarning" class="calc-warning" style="display:none;">
-      <div class="msg"></div>
-    </div>
-
-    <div id="breakfastTip" style="display:none; background:#fff5f5; border:1px solid #fca5a5; border-radius:8px; padding:14px 16px; margin-top:12px;">
-      <p style="font-size:13px; color:#dc2626; line-height:1.6;"><strong>Breakfast note:</strong> The data shows morning insulin resistance is very high. The meal dose shown uses ~10g:1u (tighter than other meals). Consider also pre-bolusing 10–15 minutes before she eats, and possibly reducing breakfast carbs when feasible. The correction ISF shown is estimated — corrections alone don't reliably work in this window.</p>
-    </div>
-
-    <p style="font-size:12px; color:#999; margin-top:12px;">
-      Doses rounded to nearest 0.5u. This does <strong>not</strong> account for insulin on board (IOB) from previous doses — if she had fast-acting in the last 3–4 hours, subtract that active insulin from the correction portion.
-    </p>
-  </div>
-
-  <!-- Correction-only reference (kept for quick lookup) -->
-  <div class="card" id="correction-ref">
-    <h2>Quick Correction-Only Reference (no meal)</h2>
-    <p style="font-size:13px; color:#666; margin-bottom:12px;">If she's not eating and you just need to correct a high (updated Apr 21):</p>
-    <div class="table-wrap">
-    <table class="correction-table" style="font-size:13px;">
-      <thead>
-        <tr>
-          <th>Time</th>
-          <th>ISF (1u drops)</th>
-          <th>From 250</th>
-          <th>From 300</th>
-          <th>From 350</th>
-          <th>From 400</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="warning-row">
-          <td class="time-cell">5–10 AM</td>
-          <td style="color:#ef4444; font-weight:600;">~30*</td>
-          <td>3.5u</td>
-          <td>5.0u</td>
-          <td>6.5u</td>
-          <td>8.5u</td>
-        </tr>
-        <tr><td class="time-cell">10 AM–2 PM</td><td class="isf-cell">~60</td><td>1.5u</td><td>2.5u</td><td>3.5u</td><td>4.0u</td></tr>
-        <tr><td class="time-cell">2–5 PM</td><td class="isf-cell">~75</td><td>1.5u</td><td>2.0u</td><td>2.5u</td><td>3.5u</td></tr>
-        <tr><td class="time-cell">5–9 PM</td><td class="isf-cell">~40</td><td>2.5u</td><td>4.0u</td><td>5.0u</td><td>6.5u</td></tr>
-        <tr><td class="time-cell">9 PM+</td><td class="isf-cell">~80</td><td>1.5u</td><td>2.0u</td><td>2.5u</td><td>3.0u</td></tr>
-      </tbody>
-    </table>
-    </div>
-    <p style="font-size:11px; color:#999; margin-top:8px;">Target: 150 mg/dL. ISF = mg/dL drop per 1 unit. *Morning ISF is unreliable — corrections compete with dawn hormones.</p>
   </div>
 
   <p class="updated-badge">Updated April 21, 2026 &middot; Data from April 14–21</p>
