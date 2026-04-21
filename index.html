@@ -154,20 +154,10 @@
     <a href="#correction-ref">Correction Ref</a>
   </nav>
 
-  <div class="disclaimer">
-    <strong>For discussion with your endocrinologist only.</strong> These estimates are based on 8 days of data with limited samples per time window. They should be used as a conversation starter with Rowyn's care team, not as a dosing guide on their own.
-  </div>
-
-  <!-- Key insight -->
-  <div class="insight">
-    <h3>Honeymoon Update — Sensitivity Is Increasing</h3>
-    <p>Rowyn is becoming more sensitive to insulin, especially in the <strong>afternoon</strong> (2–5 PM) where 0.5u now drops her ~38 mg/dL — nearly double what it was earlier. The evening is also more sensitive than before. <strong>Be cautious with afternoon and evening doses to avoid lows.</strong> Breakfast remains resistant, but is improving slightly. These numbers will keep shifting — plan to recheck weekly.</p>
-  </div>
-
   <!-- Chart -->
   <div class="card" id="isf-chart">
     <h2>BG Drop per 0.5u of Fast-Acting Insulin</h2>
-    <p style="font-size:12px; color:#666; margin-bottom:12px;">Updated Apr 21 — recency-weighted. Notice how afternoon sensitivity has jumped significantly.</p>
+    <p style="font-size:12px; color:#666; margin-bottom:12px;">Updated Apr 21</p>
     <div class="chart-container">
       <svg class="chart-svg" viewBox="0 0 700 300" preserveAspectRatio="xMidYMid meet">
         <defs>
@@ -233,7 +223,7 @@
         <text x="376" y="16" text-anchor="middle" font-size="9" fill="#059669" font-weight="600">MOST SENSITIVE</text>
       </svg>
     </div>
-    <p class="chart-note">* Breakfast ISF is an estimate — corrections are unreliable in this window due to morning hormones. The green afternoon bar reflects the honeymoon increase in sensitivity.</p>
+    <p class="chart-note">* Breakfast ISF is an estimate — corrections are unreliable in this window due to morning hormones.</p>
   </div>
 
   <!-- Correction Reference Table (uses finer sub-windows; not auto-generated from profiles) -->
@@ -306,7 +296,7 @@
   <!-- ICR Reference Table -->
   <div class="card" id="icr-table">
     <h2>Insulin-to-Carb Ratio (ICR) by Time of Day</h2>
-    <p style="font-size:13px; color:#666; margin-bottom:16px;">Updated April 21 — recency-weighted from the past week. Rowyn is becoming more insulin sensitive (honeymoon period), so recent meals count more heavily.</p>
+    <p style="font-size:13px; color:#666; margin-bottom:16px;">Updated April 21</p>
     <table class="correction-table">
       <thead>
         <tr>
@@ -345,7 +335,6 @@
     </table>
     <p style="font-size:12px; color:#999; margin-top:12px;">
       ICR = grams of carbs covered by 1 unit. <strong>Lower number = more insulin per carb.</strong> For example, 16g:1u means 1 unit covers 16g of carbs, so a 48g meal needs 3 units.
-      <br><strong>Honeymoon note:</strong> These numbers are shifting — recheck weekly. The afternoon and evening are moving fastest toward higher sensitivity.
     </p>
   </div>
 
@@ -415,7 +404,7 @@
   <!-- Correction-only reference (kept for quick lookup) -->
   <div class="card" id="correction-ref">
     <h2>Quick Correction-Only Reference (no meal)</h2>
-    <p style="font-size:13px; color:#666; margin-bottom:12px;">If she's not eating and you just need to correct a high (updated Apr 21, honeymoon-adjusted):</p>
+    <p style="font-size:13px; color:#666; margin-bottom:12px;">If she's not eating and you just need to correct a high (updated Apr 21):</p>
     <table class="correction-table" style="font-size:13px;">
       <thead>
         <tr>
@@ -442,14 +431,10 @@
         <tr><td class="time-cell">9 PM+</td><td class="isf-cell">~80</td><td>1.5u</td><td>2.0u</td><td>2.5u</td><td>3.0u</td></tr>
       </tbody>
     </table>
-    <p style="font-size:11px; color:#999; margin-top:8px;">Target: 150 mg/dL. ISF = mg/dL drop per 1 unit. *Morning ISF is unreliable — corrections compete with dawn hormones. Afternoon sensitivity has increased significantly during honeymoon.</p>
+    <p style="font-size:11px; color:#999; margin-top:8px;">Target: 150 mg/dL. ISF = mg/dL drop per 1 unit. *Morning ISF is unreliable — corrections compete with dawn hormones.</p>
   </div>
 
-  <div class="disclaimer" style="margin-top: 24px;">
-    <strong>Important:</strong> This analysis is based on ~49 fast-acting insulin events over 8 days. These numbers will become more reliable as you collect more data. Always verify dosing decisions with Rowyn's endocrinologist, especially given her young age and small size. Insulin stacking (dosing before a previous dose has finished working) is a real risk — most fast-acting insulin is active for 3–4 hours.
-  </div>
-
-  <p class="updated-badge">Updated April 21, 2026 &middot; Data from April 14–21 &middot; Recency-weighted for honeymoon shift &middot; Discuss changes with your endo</p>
+  <p class="updated-badge">Updated April 21, 2026 &middot; Data from April 14–21</p>
 </div>
 
 <script>
@@ -516,9 +501,6 @@ function calculate() {
 
   // Warnings
   const warnings = [];
-  if (total >= 5) {
-    warnings.push('This is a large dose for a small child. Please confirm with your endocrinologist. Watch closely for lows 2-4 hours later.');
-  }
   if (corrUnits > 0 && profile.resistant) {
     warnings.push('Morning corrections are unreliable based on the data. The correction portion is a rough estimate — the tighter ICR is doing most of the work here.');
   }
