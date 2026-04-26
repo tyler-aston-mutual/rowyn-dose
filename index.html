@@ -204,7 +204,7 @@
   <!-- Chart -->
   <div class="card" id="isf-chart">
     <h2>BG Drop per 0.5u of Fast-Acting Insulin</h2>
-    <p style="font-size:12px; color:#666; margin-bottom:12px;">Updated Apr 25</p>
+    <p style="font-size:12px; color:#666; margin-bottom:12px;">Updated Apr 26</p>
     <div class="chart-container">
       <svg class="chart-svg" viewBox="0 0 700 300" preserveAspectRatio="xMidYMid meet">
         <defs>
@@ -240,10 +240,10 @@
         <rect x="115" y="140" width="80" height="100" rx="4" fill="url(#barWarn)" opacity="0.8"/>
         <text x="155" y="133" text-anchor="middle" font-size="13" fill="#ef4444" font-weight="600">20*</text>
         <text x="155" y="268" text-anchor="middle" font-size="11" fill="#dc2626" font-weight="700">5-10am</text>
-        <text x="155" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=9</text>
+        <text x="155" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=8</text>
 
-        <rect x="225" y="15" width="80" height="225" rx="4" fill="url(#barHot)"/>
-        <text x="265" y="8" text-anchor="middle" font-size="13" fill="#059669" font-weight="600">45</text>
+        <rect x="225" y="-10" width="80" height="250" rx="4" fill="url(#barHot)"/>
+        <text x="265" y="-17" text-anchor="middle" font-size="13" fill="#059669" font-weight="600">50</text>
         <text x="265" y="268" text-anchor="middle" font-size="11" fill="#059669" font-weight="700">10am-2pm</text>
         <text x="265" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=10</text>
 
@@ -260,7 +260,7 @@
         <rect x="555" y="-10" width="80" height="250" rx="4" fill="url(#barGrad)" opacity="0.7"/>
         <text x="595" y="-17" text-anchor="middle" font-size="13" fill="#2563eb" font-weight="600">50</text>
         <text x="595" y="268" text-anchor="middle" font-size="11" fill="#666">9pm+</text>
-        <text x="595" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=8</text>
+        <text x="595" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=7</text>
 
         <!-- Annotations -->
         <rect x="110" y="4" width="90" height="18" rx="4" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
@@ -345,7 +345,7 @@
   <!-- Correction-only reference (kept for quick lookup) -->
   <div class="card" id="correction-ref">
     <h2>Quick Correction-Only Reference (no meal)</h2>
-    <p style="font-size:13px; color:#666; margin-bottom:12px;">If she's not eating and you just need to correct a high (updated Apr 25):</p>
+    <p style="font-size:13px; color:#666; margin-bottom:12px;">If she's not eating and you just need to correct a high (updated Apr 26):</p>
     <div class="table-wrap">
     <table class="correction-table" style="font-size:13px;">
       <thead>
@@ -367,7 +367,7 @@
           <td>5.0u</td>
           <td>6.5u</td>
         </tr>
-        <tr><td class="time-cell">10 AM–2 PM</td><td class="isf-cell">~90</td><td>1.0u</td><td>1.5u</td><td>2.0u</td><td>3.0u</td></tr>
+        <tr><td class="time-cell">10 AM–2 PM</td><td class="isf-cell">~100</td><td>1.0u</td><td>1.5u</td><td>2.0u</td><td>2.5u</td></tr>
         <tr><td class="time-cell">2–5 PM</td><td class="isf-cell">~100</td><td>1.0u</td><td>1.5u</td><td>2.0u</td><td>2.5u</td></tr>
         <tr><td class="time-cell">5–9 PM</td><td class="isf-cell">~40</td><td>2.5u</td><td>4.0u</td><td>5.0u</td><td>6.5u</td></tr>
         <tr><td class="time-cell">9 PM+</td><td class="isf-cell">~100</td><td>1.0u</td><td>1.5u</td><td>2.0u</td><td>2.5u</td></tr>
@@ -380,7 +380,7 @@
   <!-- ICR Reference Table -->
   <div class="card" id="icr-table">
     <h2>Insulin-to-Carb Ratio (ICR) by Time of Day</h2>
-    <p style="font-size:13px; color:#666; margin-bottom:16px;">Updated April 25</p>
+    <p style="font-size:13px; color:#666; margin-bottom:16px;">Updated April 26</p>
     <div class="table-wrap">
     <table class="correction-table">
       <thead>
@@ -396,25 +396,25 @@
           <td class="time-cell">Breakfast (5–10 AM) <span class="warning-badge">STILL RESISTANT</span></td>
           <td class="isf-cell" style="color:#ef4444">~15g : 1u</td>
           <td style="font-size:12px;">Holding</td>
-          <td style="font-size:12px;">Three near-zero-response AM corrections in the last week (Apr 24, 24, 25 — 1u dropped her 0–2 mg/dL). Morning corrections remain unreliable — pre-bolus + tighter ICR are the real tools here.</td>
+          <td style="font-size:12px;">Apr 24 had two near-zero-response AM corrections (1u → 2 mg/dL drop; 0.5u → 0). Morning corrections remain unreliable — pre-bolus + tighter ICR are the real tools here.</td>
         </tr>
         <tr>
           <td class="time-cell">Lunch (10 AM – 2 PM) <span class="caution-badge">MORE SENSITIVE</span></td>
           <td class="isf-cell">~20g : 1u</td>
           <td style="font-size:12px;">Loosening ISF</td>
-          <td style="font-size:12px;">Apr 24 at 11:40: 1.5u dropped her 257 → nadir 69 (ISF ~125). Combined with Apr 20 nadir 90 and Apr 23 nadir 92, lunch is trending more sensitive — loosening ISF from 75 to 90.</td>
+          <td style="font-size:12px;">Apr 24 11:40: 1.5u dropped her 188 mg/dL → nadir 69 (ISF ~125). Median ISF this week was 105. Loosening ISF from 90 to 100 to match her trend toward sensitivity.</td>
         </tr>
         <tr>
           <td class="time-cell">Afternoon (2–5 PM) <span class="caution-badge">STILL SENSITIVE</span></td>
           <td class="isf-cell">~18g : 1u</td>
           <td style="font-size:12px;">Holding</td>
-          <td style="font-size:12px;">Apr 24 at 11.5g:1u effective (23g, 2u from 290) landed nadir 138. Setting still fits — holding 18g:1u and ISF 100.</td>
+          <td style="font-size:12px;">Multiple recent nadirs in the 80s–90s (Apr 21: 89, Apr 23: 85, Apr 25: 97). Holding 18g:1u — margin is thin, don't tighten.</td>
         </tr>
         <tr>
           <td class="time-cell">Dinner (5–9 PM) <span class="caution-badge">MORE SENSITIVE</span></td>
           <td class="isf-cell">~22g : 1u</td>
-          <td style="font-size:12px;">Loosening ICR</td>
-          <td style="font-size:12px;">4 of 6 recent dinners landed low-end (Apr 17, 20, 21, 24). Apr 24 at 18g:1u (36g, 2u from 271) overshot to end 103. Loosening from 20 to 22g:1u.</td>
+          <td style="font-size:12px;">Holding</td>
+          <td style="font-size:12px;">Recent change to 22g:1u is being validated: Apr 25 at 24.5:1 ended high (247) and Apr 24 at 18:1 went low-end (end 103). 22g is the right middle.</td>
         </tr>
       </tbody>
     </table>
@@ -424,7 +424,7 @@
     </p>
   </div>
 
-  <p class="updated-badge">Updated April 25, 2026 &middot; Data from April 19–25</p>
+  <p class="updated-badge">Updated April 26, 2026 &middot; Data from April 19–25</p>
 </div>
 
 <script>
@@ -432,7 +432,7 @@
 // Generated by build.py from profiles.json — do not edit directly.
 const profiles = {
   breakfast:  { icr: 15, isf: 40,  label: 'Breakfast (5-10 AM)', resistant: true },
-  lunch:      { icr: 20, isf: 90,  label: 'Lunch (10 AM-2 PM)' },
+  lunch:      { icr: 20, isf: 100,  label: 'Lunch (10 AM-2 PM)' },
   afternoon:  { icr: 18, isf: 100,  label: 'Afternoon (2-5 PM)' },
   dinner:     { icr: 22, isf: 40,  label: 'Dinner (5-9 PM)' },
   night:      { icr: 20, isf: 100,  label: 'Night (9 PM+)' }
