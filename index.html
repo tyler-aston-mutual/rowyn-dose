@@ -99,8 +99,6 @@
   .calc-result .big-number { font-size: 36px; font-weight: 700; color: #2563eb; }
   .calc-result .unit { font-size: 16px; color: #666; }
   .calc-result .detail { font-size: 13px; color: #888; margin-top: 8px; }
-  .calc-warning { background: #fff5f5; border: 2px solid #ef4444; border-radius: 12px; padding: 16px; text-align: center; margin-top: 12px; }
-  .calc-warning .msg { font-size: 14px; color: #dc2626; font-weight: 600; line-height: 1.5; }
 
   /* Key insight */
   .insight { background: linear-gradient(135deg, #eff6ff, #f0f7ff); border-left: 4px solid #2563eb; padding: 16px 20px; border-radius: 0 8px 8px 0; margin-bottom: 20px; }
@@ -188,17 +186,6 @@
       </div>
     </div>
 
-    <div id="calcWarning" class="calc-warning" style="display:none;">
-      <div class="msg"></div>
-    </div>
-
-    <div id="breakfastTip" style="display:none; background:#fff5f5; border:1px solid #fca5a5; border-radius:8px; padding:14px 16px; margin-top:12px;">
-      <p style="font-size:13px; color:#dc2626; line-height:1.6;"><strong>Breakfast note:</strong> The data shows morning insulin resistance is very high. The meal dose shown uses ~10g:1u (tighter than other meals). Consider also pre-bolusing 10–15 minutes before she eats, and possibly reducing breakfast carbs when feasible. The correction ISF shown is estimated — corrections alone don't reliably work in this window.</p>
-    </div>
-
-    <p style="font-size:12px; color:#999; margin-top:12px;">
-      Doses rounded to nearest 0.5u. This does <strong>not</strong> account for insulin on board (IOB) from previous doses — if she had fast-acting in the last 3–4 hours, subtract that active insulin from the correction portion.
-    </p>
   </div>
 
   <!-- Chart -->
@@ -453,11 +440,6 @@ function calculate() {
   const timeKey = document.getElementById('timeOfDay').value;
   const profile = profiles[timeKey];
 
-  const warningDiv = document.getElementById('calcWarning');
-  const breakfastTip = document.getElementById('breakfastTip');
-  warningDiv.style.display = 'none';
-  breakfastTip.style.display = profile.resistant ? 'block' : 'none';
-
   // Meal dose
   const mealUnitsRaw = carbs > 0 ? carbs / profile.icr : 0;
   const mealUnits = roundHalf(mealUnitsRaw);
@@ -492,20 +474,6 @@ function calculate() {
   document.getElementById('totalDose').textContent = total.toFixed(1) + 'u';
   document.getElementById('totalDetail').textContent =
     `${mealUnits.toFixed(1)} meal + ${corrUnits.toFixed(1)} correction`;
-
-  // Warnings
-  const warnings = [];
-  if (corrUnits > 0 && profile.resistant) {
-    warnings.push('Morning corrections are unreliable based on the data. The correction portion is a rough estimate — the tighter ICR is doing most of the work here.');
-  }
-  if (currentBG < 100 && carbs > 0) {
-    warnings.push('BG is near or below low threshold. Consider giving carbs first and dosing after she starts eating.');
-  }
-
-  if (warnings.length > 0) {
-    warningDiv.style.display = 'block';
-    warningDiv.querySelector('.msg').innerHTML = warnings.map(w => '&#9888; ' + w).join('<br><br>');
-  }
 }
 
 // Attach listeners
