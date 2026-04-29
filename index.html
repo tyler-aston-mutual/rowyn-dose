@@ -134,7 +134,7 @@
 <body>
 <div class="container">
   <h1>Rowyn's Insulin Dosing Guide</h1>
-  <p class="subtitle">Based on Dexcom Clarity data, April 21–27, 2026 &middot; Correction factor + carb ratios from real meal responses</p>
+  <p class="subtitle">Based on Dexcom Clarity data, April 22–28, 2026 &middot; Correction factor + carb ratios from real meal responses</p>
 
   <!-- Combined Calculator -->
   <div class="card calc-card" id="calculator">
@@ -191,7 +191,7 @@
   <!-- Chart -->
   <div class="card" id="isf-chart">
     <h2>BG Drop per 0.5u of Fast-Acting Insulin</h2>
-    <p style="font-size:12px; color:#666; margin-bottom:12px;">Updated Apr 28</p>
+    <p style="font-size:12px; color:#666; margin-bottom:12px;">Updated Apr 29</p>
     <div class="chart-container">
       <svg class="chart-svg" viewBox="0 0 700 300" preserveAspectRatio="xMidYMid meet">
         <defs>
@@ -231,7 +231,7 @@
         <rect x="115" y="173" width="80" height="67" rx="4" fill="url(#barWarn)" opacity="0.8"/>
         <text x="155" y="166" text-anchor="middle" font-size="13" fill="#ef4444" font-weight="600">20*</text>
         <text x="155" y="268" text-anchor="middle" font-size="11" fill="#dc2626" font-weight="700">5-10am</text>
-        <text x="155" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=7</text>
+        <text x="155" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=8</text>
 
         <rect x="225" y="73" width="80" height="167" rx="4" fill="url(#barHot)"/>
         <text x="265" y="66" text-anchor="middle" font-size="13" fill="#059669" font-weight="600">50</text>
@@ -248,8 +248,8 @@
         <text x="485" y="268" text-anchor="middle" font-size="11" fill="#059669" font-weight="700">5-9pm</text>
         <text x="485" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=7</text>
 
-        <rect x="555" y="40" width="80" height="200" rx="4" fill="url(#barGrad)" opacity="0.7"/>
-        <text x="595" y="33" text-anchor="middle" font-size="13" fill="#2563eb" font-weight="600">60</text>
+        <rect x="555" y="23" width="80" height="217" rx="4" fill="url(#barGrad)" opacity="0.7"/>
+        <text x="595" y="16" text-anchor="middle" font-size="13" fill="#2563eb" font-weight="600">65</text>
         <text x="595" y="268" text-anchor="middle" font-size="11" fill="#666">9pm+</text>
         <text x="595" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=6</text>
 
@@ -336,7 +336,7 @@
   <!-- Correction-only reference (kept for quick lookup) -->
   <div class="card" id="correction-ref">
     <h2>Quick Correction-Only Reference (no meal)</h2>
-    <p style="font-size:13px; color:#666; margin-bottom:12px;">If she's not eating and you just need to correct a high (updated Apr 28):</p>
+    <p style="font-size:13px; color:#666; margin-bottom:12px;">If she's not eating and you just need to correct a high (updated Apr 29):</p>
     <div class="table-wrap">
     <table class="correction-table" style="font-size:13px;">
       <thead>
@@ -361,7 +361,7 @@
         <tr><td class="time-cell">10 AM–2 PM</td><td class="isf-cell">~100</td><td>1.0u</td><td>1.5u</td><td>2.0u</td><td>2.5u</td></tr>
         <tr><td class="time-cell">2–5 PM</td><td class="isf-cell">~100</td><td>1.0u</td><td>1.5u</td><td>2.0u</td><td>2.5u</td></tr>
         <tr><td class="time-cell">5–9 PM</td><td class="isf-cell">~40</td><td>2.5u</td><td>4.0u</td><td>5.0u</td><td>6.5u</td></tr>
-        <tr><td class="time-cell">9 PM+</td><td class="isf-cell">~120</td><td>1.0u</td><td>1.5u</td><td>1.5u</td><td>2.0u</td></tr>
+        <tr><td class="time-cell">9 PM+</td><td class="isf-cell">~130</td><td>1.0u</td><td>1.0u</td><td>1.5u</td><td>2.0u</td></tr>
       </tbody>
     </table>
     </div>
@@ -371,7 +371,7 @@
   <!-- ICR Reference Table -->
   <div class="card" id="icr-table">
     <h2>Insulin-to-Carb Ratio (ICR) by Time of Day</h2>
-    <p style="font-size:13px; color:#666; margin-bottom:16px;">Updated April 28</p>
+    <p style="font-size:13px; color:#666; margin-bottom:16px;">Updated April 29</p>
     <div class="table-wrap">
     <table class="correction-table">
       <thead>
@@ -387,25 +387,25 @@
           <td class="time-cell">Breakfast (5–10 AM) <span class="warning-badge">STILL RESISTANT</span></td>
           <td class="isf-cell" style="color:#ef4444">~15g : 1u</td>
           <td style="font-size:12px;">Holding</td>
-          <td style="font-size:12px;">Apr 24 zero-drop corrections + Apr 27 1u → 20 mg/dL drop. Morning corrections remain unreliable. All recent breakfasts were 11–12g — no full-meal data to retest ICR.</td>
+          <td style="font-size:12px;">First real-sized breakfast in weeks: Apr 28 32g at 16g:1u → nadir 90 (close to low). 15g:1u is at the edge — don't tighten. Morning corrections remain unreliable (Apr 24 zero-drops, Apr 27 1u → 20).</td>
         </tr>
         <tr>
           <td class="time-cell">Lunch (10 AM – 2 PM) <span class="caution-badge">MORE SENSITIVE</span></td>
           <td class="isf-cell">~22g : 1u</td>
           <td style="font-size:12px;">Holding</td>
-          <td style="font-size:12px;">Apr 26 CRASH at 20.8g:1u was the reason for the recent 20→22 change. Apr 27 went the other way: tight 12.7g and 16g ratios both spiked to Max 390. 22g:1u stays the right middle.</td>
+          <td style="font-size:12px;">Apr 28 fresh validation: 59g at 19.7g:1u (3u from 255) → nadir 213, end 238 (textbook). The Apr 26 crash at 20.8g:1u still says don't tighten. 22g:1u is the right middle.</td>
         </tr>
         <tr>
           <td class="time-cell">Afternoon (2–5 PM) <span class="caution-badge">STILL SENSITIVE</span></td>
           <td class="isf-cell">~18g : 1u</td>
           <td style="font-size:12px;">Holding</td>
-          <td style="font-size:12px;">Multiple recent nadirs in the 80s (Apr 23: 85, Apr 27: 86). Tighter doses (9–11g:1u) keep coming close to lows. Holding 18g:1u — don't tighten.</td>
+          <td style="font-size:12px;">Highly variable: Apr 28 22g at 11g:1u → end 334 (insulin barely worked); Apr 25 at 6.7g:1u → low-end; Apr 27 at 9g:1u → nadir 86. Holding 18g:1u — variance is too wide to chase.</td>
         </tr>
         <tr>
           <td class="time-cell">Dinner (5–9 PM) <span class="caution-badge">MORE SENSITIVE</span></td>
           <td class="isf-cell">~22g : 1u</td>
           <td style="font-size:12px;">Holding</td>
-          <td style="font-size:12px;">Apr 27 textbook event: 61g at 20.3g:1u (3u from 248) → nadir 162, end 272. Recent change to 22g:1u is fitting cleanly.</td>
+          <td style="font-size:12px;">Two recent ~24g:1u events both went high-end (Apr 25 end 247, Apr 28 Max 400). Apr 27 at 20.3g:1u was textbook. 22g:1u sits between them — keep.</td>
         </tr>
       </tbody>
     </table>
@@ -415,7 +415,7 @@
     </p>
   </div>
 
-  <p class="updated-badge">Updated April 28, 2026 &middot; Data from April 21–27</p>
+  <p class="updated-badge">Updated April 29, 2026 &middot; Data from April 22–28</p>
 </div>
 
 <script>
@@ -426,7 +426,7 @@ const profiles = {
   lunch:      { icr: 22, isf: 100,  label: 'Lunch (10 AM-2 PM)' },
   afternoon:  { icr: 18, isf: 100,  label: 'Afternoon (2-5 PM)' },
   dinner:     { icr: 22, isf: 40,  label: 'Dinner (5-9 PM)' },
-  night:      { icr: 20, isf: 120,  label: 'Night (9 PM+)' }
+  night:      { icr: 20, isf: 130,  label: 'Night (9 PM+)' }
 };
 
 function roundHalf(n) {
