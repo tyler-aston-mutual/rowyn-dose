@@ -134,7 +134,7 @@
 <body>
 <div class="container">
   <h1>Rowyn's Insulin Dosing Guide</h1>
-  <p class="subtitle">Based on Dexcom Clarity data, April 27–May 3, 2026 &middot; Correction factor + carb ratios from real meal responses</p>
+  <p class="subtitle">Based on Dexcom Clarity data, April 28–May 4, 2026 &middot; Correction factor + carb ratios from real meal responses</p>
 
   <!-- Combined Calculator -->
   <div class="card calc-card" id="calculator">
@@ -191,7 +191,7 @@
   <!-- Chart -->
   <div class="card" id="isf-chart">
     <h2>BG Drop per 0.5u of Fast-Acting Insulin</h2>
-    <p style="font-size:12px; color:#666; margin-bottom:12px;">Updated May 3</p>
+    <p style="font-size:12px; color:#666; margin-bottom:12px;">Updated May 4</p>
     <div class="chart-container">
       <svg class="chart-svg" viewBox="0 0 700 300" preserveAspectRatio="xMidYMid meet">
         <defs>
@@ -235,7 +235,7 @@
         <rect x="115" y="161" width="80" height="79" rx="4" fill="url(#barWarn)" opacity="0.8"/>
         <text x="155" y="181" text-anchor="middle" font-size="13" fill="white" font-weight="600">36*</text>
         <text x="155" y="268" text-anchor="middle" font-size="11" fill="#dc2626" font-weight="700">5-10am</text>
-        <text x="155" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=10</text>
+        <text x="155" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=11</text>
 
         <rect x="225" y="129" width="80" height="111" rx="4" fill="url(#barHot)"/>
         <text x="265" y="149" text-anchor="middle" font-size="13" fill="white" font-weight="600">50</text>
@@ -245,7 +245,7 @@
         <rect x="335" y="96" width="80" height="144" rx="4" fill="url(#barHot)"/>
         <text x="375" y="116" text-anchor="middle" font-size="13" fill="white" font-weight="600">65</text>
         <text x="375" y="268" text-anchor="middle" font-size="11" fill="#059669" font-weight="700">2-5pm</text>
-        <text x="375" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=5</text>
+        <text x="375" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=4</text>
 
         <rect x="445" y="196" width="80" height="44" rx="4" fill="url(#barHot)"/>
         <text x="485" y="216" text-anchor="middle" font-size="13" fill="white" font-weight="600">20</text>
@@ -261,165 +261,14 @@
         <rect x="110" y="4" width="90" height="18" rx="4" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
         <text x="155" y="16" text-anchor="middle" font-size="9" fill="#dc2626" font-weight="600">RESISTANT</text>
 
-        <rect x="325" y="4" width="102" height="18" rx="4" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1"/>
-        <text x="376" y="16" text-anchor="middle" font-size="9" fill="#059669" font-weight="600">MOST SENSITIVE</text>
+        <rect x="324" y="4" width="102" height="18" rx="4" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1"/>
+        <text x="375" y="16" text-anchor="middle" font-size="9" fill="#059669" font-weight="600">MOST SENSITIVE</text>
       </svg>
     </div>
-    <p class="chart-note">* Breakfast ISF is an estimate — corrections are unreliable in this window due to morning hormones.</p>
+    <p class="chart-note">* 5-10am ISF is an estimate — corrections often underperform here; pre-bolus and tighter ICR matter more.</p>
   </div>
 
-  <!-- Correction Reference Table (uses finer sub-windows; not auto-generated from profiles) -->
-  <div class="card">
-    <h2>Correction Reference: How Much Fast-Acting to Reach ~150 mg/dL</h2>
-    <div class="table-wrap">
-    <table class="correction-table">
-      <thead>
-        <tr>
-          <th>Time of Day</th>
-          <th>0.5u Drops</th>
-          <th>From 250</th>
-          <th>From 300</th>
-          <th>From 350</th>
-          <th>From 400</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="warning-row">
-          <td class="time-cell">8–10 AM <span class="warning-badge">RESISTANT</span></td>
-          <td class="isf-cell" style="color:#ef4444">~0*</td>
-          <td colspan="4" style="font-size:13px; color:#dc2626; font-style:italic;">Corrections alone don't work well here — needs tighter ICR + pre-bolus. Discuss with endo.</td>
-        </tr>
-        <tr>
-          <td class="time-cell">10 AM – 12 PM</td>
-          <td class="isf-cell">~32 mg/dL</td>
-          <td>1.5u</td>
-          <td>2.5u</td>
-          <td>3.0u</td>
-          <td>4.0u</td>
-        </tr>
-        <tr>
-          <td class="time-cell">12 – 3 PM</td>
-          <td class="isf-cell">~30 mg/dL</td>
-          <td>1.5u</td>
-          <td>2.5u</td>
-          <td>3.5u</td>
-          <td>4.0u</td>
-        </tr>
-        <tr>
-          <td class="time-cell">3 – 5 PM</td>
-          <td class="isf-cell">~24 mg/dL</td>
-          <td>2.0u</td>
-          <td>3.0u</td>
-          <td>4.0u</td>
-          <td>5.0u</td>
-        </tr>
-        <tr>
-          <td class="time-cell">5 – 8 PM <span class="caution-badge">YOUR EXAMPLE</span></td>
-          <td class="isf-cell">~28 mg/dL</td>
-          <td>2.0u</td>
-          <td>2.5u</td>
-          <td>3.5u</td>
-          <td>4.5u</td>
-        </tr>
-        <tr>
-          <td class="time-cell">8 – 11 PM</td>
-          <td class="isf-cell">~29 mg/dL</td>
-          <td>2.0u</td>
-          <td>2.5u</td>
-          <td>3.5u</td>
-          <td>4.5u</td>
-        </tr>
-      </tbody>
-    </table>
-    </div>
-    <p style="font-size:12px; color:#999; margin-top:12px;">
-      Target: 150 mg/dL. Doses rounded to nearest 0.5u. These are <em>correction-only</em> estimates — add meal insulin (ICR) on top if she's also eating.
-    </p>
-  </div>
-
-  <!-- Correction-only reference (kept for quick lookup) -->
-  <div class="card" id="correction-ref">
-    <h2>Quick Correction-Only Reference (no meal)</h2>
-    <p style="font-size:13px; color:#666; margin-bottom:12px;">If she's not eating and you just need to correct a high (updated May 3):</p>
-    <div class="table-wrap">
-    <table class="correction-table" style="font-size:13px;">
-      <thead>
-        <tr>
-          <th>Time</th>
-          <th>ISF (1u drops)</th>
-          <th>From 250</th>
-          <th>From 300</th>
-          <th>From 350</th>
-          <th>From 400</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="warning-row">
-          <td class="time-cell">5–10 AM</td>
-          <td style="color:#ef4444; font-weight:600;">~71*</td>
-          <td>1.5u</td>
-          <td>2.0u</td>
-          <td>3.0u</td>
-          <td>3.5u</td>
-        </tr>
-        <tr><td class="time-cell">10 AM–2 PM</td><td class="isf-cell">~100</td><td>1.0u</td><td>1.5u</td><td>2.0u</td><td>2.5u</td></tr>
-        <tr><td class="time-cell">2–5 PM</td><td class="isf-cell">~130</td><td>1.0u</td><td>1.0u</td><td>1.5u</td><td>2.0u</td></tr>
-        <tr><td class="time-cell">5–9 PM</td><td class="isf-cell">~40</td><td>2.5u</td><td>4.0u</td><td>5.0u</td><td>6.5u</td></tr>
-        <tr><td class="time-cell">9 PM+</td><td class="isf-cell">~169</td><td>0.5u</td><td>1.0u</td><td>1.0u</td><td>1.5u</td></tr>
-      </tbody>
-    </table>
-    </div>
-    <p style="font-size:11px; color:#999; margin-top:8px;">Target: 150 mg/dL. ISF = mg/dL drop per 1 unit. *Morning ISF is unreliable — corrections compete with dawn hormones.</p>
-  </div>
-
-  <!-- ICR Reference Table -->
-  <div class="card" id="icr-table">
-    <h2>Insulin-to-Carb Ratio (ICR) by Time of Day</h2>
-    <p style="font-size:13px; color:#666; margin-bottom:16px;">Updated May 3</p>
-    <div class="table-wrap">
-    <table class="correction-table">
-      <thead>
-        <tr>
-          <th>Time of Day</th>
-          <th>Recommended ICR</th>
-          <th>Trend</th>
-          <th>Notes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="warning-row">
-          <td class="time-cell">Breakfast (5–10 AM) <span class="warning-badge">STILL RESISTANT</span></td>
-          <td class="isf-cell" style="color:#ef4444">~17g : 1u</td>
-          <td style="font-size:12px;">Holding</td>
-          <td style="font-size:12px;">May 2 crash at 14g:1u from starting BG 130 — bumped to 17g:1u for safety buffer. Morning corrections now tracking ISF ~71-84 (May 2: 1u→71, 2u→84); updated from 40 to reduce overcorrection.</td>
-        </tr>
-        <tr>
-          <td class="time-cell">Lunch (10 AM – 2 PM) <span class="caution-badge">MORE SENSITIVE</span></td>
-          <td class="isf-cell">~25g : 1u</td>
-          <td style="font-size:12px;">More Sensitive</td>
-          <td style="font-size:12px;">4 low-end events across the dataset; May 3 45g at 18g:1u → nadir 97 is the latest. Bumped to 25g:1u for safety buffer — 0.5u tiny-meal outliers skew the median down, don't chase it.</td>
-        </tr>
-        <tr>
-          <td class="time-cell">Afternoon (2–5 PM) <span class="caution-badge">STILL SENSITIVE</span></td>
-          <td class="isf-cell">~18g : 1u</td>
-          <td style="font-size:12px;">Holding</td>
-          <td style="font-size:12px;">ICR highly variable — holding 18g:1u. ISF bumped to 130 (from 100) on two correction events trending stronger (May 1: ISF 110, May 2: ISF 236 on 0.5u — noisy but directionally consistent); conservative step toward sensitivity signal.</td>
-        </tr>
-        <tr>
-          <td class="time-cell">Dinner (5–9 PM) <span class="caution-badge">MORE SENSITIVE</span></td>
-          <td class="isf-cell">~22g : 1u</td>
-          <td style="font-size:12px;">Holding</td>
-          <td style="font-size:12px;">Two recent ~24g:1u events both went high-end (Apr 25 end 247, Apr 28 Max 400). Apr 27 at 20.3g:1u was textbook. 22g:1u sits between them — keep.</td>
-        </tr>
-      </tbody>
-    </table>
-    </div>
-    <p style="font-size:12px; color:#999; margin-top:12px;">
-      ICR = grams of carbs covered by 1 unit. <strong>Lower number = more insulin per carb.</strong> For example, 16g:1u means 1 unit covers 16g of carbs, so a 48g meal needs 3 units.
-    </p>
-  </div>
-
-  <p class="updated-badge">Updated May 3, 2026 &middot; Data from April 27–May 3</p>
+  <p class="updated-badge">Updated May 4, 2026 &middot; Data from April 28–May 4</p>
 </div>
 
 <script>
