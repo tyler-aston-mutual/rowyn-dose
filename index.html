@@ -261,11 +261,67 @@
         <rect x="110" y="4" width="90" height="18" rx="4" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
         <text x="155" y="16" text-anchor="middle" font-size="9" fill="#dc2626" font-weight="600">RESISTANT</text>
 
-        <rect x="324" y="4" width="102" height="18" rx="4" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1"/>
-        <text x="375" y="16" text-anchor="middle" font-size="9" fill="#059669" font-weight="600">MOST SENSITIVE</text>
+        <rect x="544" y="4" width="102" height="18" rx="4" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1"/>
+        <text x="595" y="16" text-anchor="middle" font-size="9" fill="#059669" font-weight="600">MOST SENSITIVE</text>
       </svg>
     </div>
     <p class="chart-note">* 5-10am ISF is an estimate — corrections often underperform here; pre-bolus and tighter ICR matter more.</p>
+  </div>
+
+  <!-- Audit trail: per-window rationale for the current ratios -->
+  <div class="card" id="audit-trail">
+    <h2>This Week's Notes</h2>
+    <p style="font-size:13px; color:#666; margin-bottom:12px;">Why these numbers — what changed, what's holding, and why.</p>
+    <div class="table-wrap">
+      <table class="correction-table" style="font-size:13px;">
+        <thead>
+          <tr>
+            <th>Window</th>
+            <th>ICR</th>
+            <th>ISF</th>
+            <th>Trend</th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="warning-row">
+            <td class="time-cell">Breakfast (5–10 AM) <span class="warning-badge">STILL RESISTANT</span></td>
+            <td style="color:#ef4444; font-weight:600;">18g:1u</td>
+            <td style="color:#ef4444; font-weight:600;">80</td>
+            <td>Easing</td>
+            <td style="font-size:12px;">Eased ICR 17→18 / ISF 71→80. Corrected scorecard (Rowyn-specific 100–300 range) flagged 3 nadirs <100: Apr 28 32g:2u → 90, May 2 14g:1u → 66 (operator-deviation from published 17), May 2 ISF 2u from start 235 → 66. Small loosen — still resistant relative to other windows, just less aggressive. Pre-bolus still matters.</td>
+          </tr>
+          <tr>
+            <td class="time-cell">Lunch (10 AM – 2 PM) <span class="caution-badge">MORE SENSITIVE</span></td>
+            <td>25g:1u</td>
+            <td>100</td>
+            <td>Holding</td>
+            <td style="font-size:12px;">Holding 25g:1u / 100 ISF. Corrected scorecard flagged 2 nadirs <100 (Apr 29 36g:0.5u → 98, May 3 45g:2.5u → 97) — both borderline-just-under, both with elevated start BGs that fell partly on their own. Real-sized meals at 25g:1u landed fine. Already loose; not chasing borderline lows.</td>
+          </tr>
+          <tr>
+            <td class="time-cell">Afternoon (2–5 PM) <span class="caution-badge">STILL SENSITIVE</span></td>
+            <td>18g:1u</td>
+            <td>130</td>
+            <td>Holding</td>
+            <td style="font-size:12px;">Holding 18g:1u / 130 ISF. Corrected scorecard flagged 2 nadirs <100 (Apr 29 14g:2u → 95, May 2 ISF 0.5u → 87) but n=4 total. The ICR events were anomalous — aggressive doses ran *up* (243→334, 211→400 ceiling), reads like under-counted carbs or undelivered insulin, not a real ratio shift. Too thin and noisy to act on; reassess next week.</td>
+          </tr>
+          <tr>
+            <td class="time-cell">Dinner (5–9 PM) <span class="caution-badge">MORE SENSITIVE</span></td>
+            <td>25g:1u</td>
+            <td>40</td>
+            <td>Easing</td>
+            <td style="font-size:12px;">Loosened ICR 22→25. Corrected scorecard flagged 4 nadirs <100 of 7 events: Apr 30 32g:2u → 94, May 1 19g:2.5u → 77 (operator-deviation 7.6g:1u from start 344), May 2 44g:2u → 87, May 3 35g:3u → 99. Pattern is consistent over-correction, not isolated events. ISF 40 unchanged — no isolated corrections this week to inform it.</td>
+          </tr>
+          <tr>
+            <td class="time-cell">Night (9 PM+)</td>
+            <td>20g:1u</td>
+            <td>169</td>
+            <td>—</td>
+            <td style="font-size:12px;">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <p class="updated-badge">Updated May 4, 2026 &middot; Data from April 28–May 4</p>
