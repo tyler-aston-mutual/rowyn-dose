@@ -134,7 +134,7 @@
 <body>
 <div class="container">
   <h1>Rowyn's Insulin Dosing Guide</h1>
-  <p class="subtitle">Based on Dexcom Clarity data, April 28–May 4, 2026 &middot; Correction factor + carb ratios from real meal responses</p>
+  <p class="subtitle">Based on Dexcom Clarity data, April 30–May 5, 2026 &middot; Correction factor + carb ratios from real meal responses</p>
 
   <!-- Combined Calculator -->
   <div class="card calc-card" id="calculator">
@@ -191,7 +191,7 @@
   <!-- Chart -->
   <div class="card" id="isf-chart">
     <h2>BG Drop per 0.5u of Fast-Acting Insulin</h2>
-    <p style="font-size:12px; color:#666; margin-bottom:12px;">Updated May 4</p>
+    <p style="font-size:12px; color:#666; margin-bottom:12px;">Updated May 6</p>
     <div class="chart-container">
       <svg class="chart-svg" viewBox="0 0 700 300" preserveAspectRatio="xMidYMid meet">
         <defs>
@@ -235,7 +235,7 @@
         <rect x="115" y="151" width="80" height="89" rx="4" fill="url(#barWarn)" opacity="0.8"/>
         <text x="155" y="171" text-anchor="middle" font-size="13" fill="white" font-weight="600">40*</text>
         <text x="155" y="268" text-anchor="middle" font-size="11" fill="#dc2626" font-weight="700">5-10am</text>
-        <text x="155" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=11</text>
+        <text x="155" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=10</text>
 
         <rect x="225" y="129" width="80" height="111" rx="4" fill="url(#barHot)"/>
         <text x="265" y="149" text-anchor="middle" font-size="13" fill="white" font-weight="600">50</text>
@@ -245,17 +245,17 @@
         <rect x="335" y="96" width="80" height="144" rx="4" fill="url(#barHot)"/>
         <text x="375" y="116" text-anchor="middle" font-size="13" fill="white" font-weight="600">65</text>
         <text x="375" y="268" text-anchor="middle" font-size="11" fill="#059669" font-weight="700">2-5pm</text>
-        <text x="375" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=4</text>
+        <text x="375" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=3</text>
 
         <rect x="445" y="129" width="80" height="111" rx="4" fill="url(#barHot)"/>
         <text x="485" y="149" text-anchor="middle" font-size="13" fill="white" font-weight="600">50</text>
         <text x="485" y="268" text-anchor="middle" font-size="11" fill="#059669" font-weight="700">5-9pm</text>
-        <text x="485" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=7</text>
+        <text x="485" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=8</text>
 
         <rect x="555" y="52" width="80" height="188" rx="4" fill="url(#barGrad)" opacity="0.7"/>
         <text x="595" y="72" text-anchor="middle" font-size="13" fill="white" font-weight="600">85</text>
         <text x="595" y="268" text-anchor="middle" font-size="11" fill="#666">9pm+</text>
-        <text x="595" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=6</text>
+        <text x="595" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=5</text>
 
         <!-- Annotations -->
         <rect x="110" y="4" width="90" height="18" rx="4" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
@@ -288,29 +288,29 @@
             <td class="time-cell">Breakfast (5–10 AM) <span class="warning-badge">STILL RESISTANT</span></td>
             <td style="color:#ef4444; font-weight:600;">18g:1u</td>
             <td style="color:#ef4444; font-weight:600;">80</td>
-            <td>Easing</td>
-            <td style="font-size:12px;">Eased ICR 17→18 / ISF 71→80. Corrected scorecard (Rowyn-specific 100–300 range) flagged 3 nadirs <100: Apr 28 32g:2u → 90, May 2 14g:1u → 66 (operator-deviation from published 17), May 2 ISF 2u from start 235 → 66. Small loosen — still resistant relative to other windows, just less aggressive. Pre-bolus still matters.</td>
+            <td>Holding</td>
+            <td style="font-size:12px;">Holding 18g:1u / 80 ISF (eased from 17/71 on May 4). Both scorecard lows (May 2 14g:1u → 66, May 2 ISF 2u → 66) are pre-fix and now stale. May 5 at the new ratios (18g 1u from 165 → nadir 155, end 201) landed in range. Need another week of post-fix data to confirm.</td>
           </tr>
           <tr>
             <td class="time-cell">Lunch (10 AM – 2 PM) <span class="caution-badge">MORE SENSITIVE</span></td>
             <td>25g:1u</td>
             <td>100</td>
-            <td>Holding</td>
-            <td style="font-size:12px;">Holding 25g:1u / 100 ISF. Corrected scorecard flagged 2 nadirs <100 (Apr 29 36g:0.5u → 98, May 3 45g:2.5u → 97) — both borderline-just-under, both with elevated start BGs that fell partly on their own. Real-sized meals at 25g:1u landed fine. Already loose; not chasing borderline lows.</td>
+            <td>Holding (watch)</td>
+            <td style="font-size:12px;">Holding 25g:1u / 100 ISF — but flagged. May 5 had two CRASHES on the same day: 6g:0.5u from 203 → nadir 78, and 31g:1u from 215 → nadir 78. The 31g event used *less* insulin than published ICR 25 would suggest (31÷25 = 1.24u) and still crashed — possible activity / hormone / IOB confound. One day's data isn't enough to act on, but if the pattern repeats this week, loosen ICR 25→28.</td>
           </tr>
           <tr>
             <td class="time-cell">Afternoon (2–5 PM) <span class="caution-badge">STILL SENSITIVE</span></td>
             <td>18g:1u</td>
             <td>130</td>
             <td>Holding</td>
-            <td style="font-size:12px;">Holding 18g:1u / 130 ISF. Corrected scorecard flagged 2 nadirs <100 (Apr 29 14g:2u → 95, May 2 ISF 0.5u → 87) but n=4 total. The ICR events were anomalous — aggressive doses ran *up* (243→334, 211→400 ceiling), reads like under-counted carbs or undelivered insulin, not a real ratio shift. Too thin and noisy to act on; reassess next week.</td>
+            <td style="font-size:12px;">Holding 18g:1u / 130 ISF. n=3 (all ISF, no ICR meals this week) — too thin to act. ISF events converging on ~131 (110, 236 from 0.5u outlier, 131), aligned with current 130. Reassess next week.</td>
           </tr>
           <tr>
             <td class="time-cell">Dinner (5–9 PM) <span class="caution-badge">MORE SENSITIVE</span></td>
             <td>25g:1u</td>
             <td>100</td>
-            <td>Easing</td>
-            <td style="font-size:12px;">Loosened ICR 22→25 and ISF 40→100. Pre-fix calculator was suggesting 5u correction from 350 (200÷40) — dangerous for a toddler. Back-calculating effective ISF from non-isolated dinner events (May 1 → ~160, May 3 35g:3u from 400 → nadir 99 → ~200) shows ISF 40 was ~4× too aggressive, driving the 4 nadirs <100 the corrected scorecard flagged. 100 is conservative; data supports going higher (toward night's 169) if the pattern persists next week.</td>
+            <td>Holding</td>
+            <td style="font-size:12px;">Holding 25g:1u / 100 ISF (eased from 22/40 on May 4). All 4 scorecard lows are pre-May-4-fix events (Apr 30, May 1, May 2, May 3) — stale signal in the rolling window. Post-fix dinners landed in range: May 4 43g:1.5u → nadir 143, end 251; May 5 56g:1u → nadir 113 (close but in). Encouraging early read; need another week to confirm.</td>
           </tr>
           <tr>
             <td class="time-cell">Night (9 PM+)</td>
@@ -324,7 +324,7 @@
     </div>
   </div>
 
-  <p class="updated-badge">Updated May 4, 2026 &middot; Data from April 28–May 4</p>
+  <p class="updated-badge">Updated May 6, 2026 &middot; Data from April 30–May 5</p>
 </div>
 
 <script>
