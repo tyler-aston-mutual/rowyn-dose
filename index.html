@@ -167,6 +167,10 @@
 
     <!-- Result breakdown -->
     <div id="calcResult" style="background:#f0f7ff; border:2px solid #2563eb; border-radius:12px; padding:24px; margin-top:8px;">
+      <div style="text-align:center; padding-bottom:14px; margin-bottom:18px; border-bottom:1px solid #cbd5e1; font-size:14px; color:#1e40af;">
+        Calculated for <span id="calcTimeLabel" style="font-weight:700;">Dinner (5-9 PM)</span>
+        <span id="calcTimeMismatch" style="display:none; font-size:11px; color:#b45309; background:#fef3c7; border:1px solid #fde68a; border-radius:4px; padding:2px 6px; margin-left:8px; vertical-align:middle;">⚠ not current time</span>
+      </div>
       <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; text-align:center;">
         <div>
           <div style="font-size:13px; color:#888; margin-bottom:4px;">Meal Dose</div>
@@ -342,12 +346,25 @@ function roundHalf(n) {
   return Math.round(n * 2) / 2;
 }
 
+function timeKeyForHour(hour) {
+  if (hour >= 5 && hour < 10) return 'breakfast';
+  if (hour >= 10 && hour < 14) return 'lunch';
+  if (hour >= 14 && hour < 17) return 'afternoon';
+  if (hour >= 17 && hour < 21) return 'dinner';
+  return 'night';
+}
+
 function calculate() {
   const carbs = parseFloat(document.getElementById('mealCarbs').value) || 0;
   const currentBG = parseFloat(document.getElementById('currentBG').value) || 0;
   const targetBG = parseFloat(document.getElementById('targetBG').value) || 150;
   const timeKey = document.getElementById('timeOfDay').value;
   const profile = profiles[timeKey];
+
+  // Show selected window prominently in the result card; flag if it doesn't match the clock
+  document.getElementById('calcTimeLabel').textContent = profile.label;
+  const liveKey = timeKeyForHour(new Date().getHours());
+  document.getElementById('calcTimeMismatch').style.display = (timeKey === liveKey) ? 'none' : 'inline-block';
 
   // Meal dose
   const mealUnitsRaw = carbs > 0 ? carbs / profile.icr : 0;
@@ -392,17 +409,7 @@ function calculate() {
 document.getElementById('timeOfDay').addEventListener('change', calculate);
 
 // Auto-detect time of day and set dropdown
-function autoDetectTime() {
-  const hour = new Date().getHours();
-  const sel = document.getElementById('timeOfDay');
-  if (hour >= 5 && hour < 10) sel.value = 'breakfast';
-  else if (hour >= 10 && hour < 14) sel.value = 'lunch';
-  else if (hour >= 14 && hour < 17) sel.value = 'afternoon';
-  else if (hour >= 17 && hour < 21) sel.value = 'dinner';
-  else sel.value = 'night';
-}
-
-autoDetectTime();
+document.getElementById('timeOfDay').value = timeKeyForHour(new Date().getHours());
 calculate();
 </script>
 </body>
