@@ -134,7 +134,7 @@
 <body>
 <div class="container">
   <h1>Rowyn's Insulin Dosing Guide</h1>
-  <p class="subtitle">Based on Dexcom Clarity data, May 2–8, 2026 &middot; Correction factor + carb ratios from real meal responses</p>
+  <p class="subtitle">Based on Dexcom Clarity data, May 5–11, 2026 &middot; Correction factor + carb ratios from real meal responses</p>
 
   <!-- Combined Calculator -->
   <div class="card calc-card" id="calculator">
@@ -195,7 +195,7 @@
   <!-- Chart -->
   <div class="card" id="isf-chart">
     <h2>BG Drop per 0.5u of Fast-Acting Insulin</h2>
-    <p style="font-size:12px; color:#666; margin-bottom:12px;">Updated May 9</p>
+    <p style="font-size:12px; color:#666; margin-bottom:12px;">Updated May 12</p>
     <div class="chart-container">
       <svg class="chart-svg" viewBox="0 0 700 300" preserveAspectRatio="xMidYMid meet">
         <defs>
@@ -241,7 +241,7 @@
         <rect x="115" y="160" width="80" height="80" rx="4" fill="url(#barWarn)" opacity="0.8"/>
         <text x="155" y="180" text-anchor="middle" font-size="13" fill="white" font-weight="600">40*</text>
         <text x="155" y="268" text-anchor="middle" font-size="11" fill="#dc2626" font-weight="700">5-10am</text>
-        <text x="155" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=13</text>
+        <text x="155" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=10</text>
 
         <rect x="225" y="140" width="80" height="100" rx="4" fill="url(#barHot)"/>
         <text x="265" y="160" text-anchor="middle" font-size="13" fill="white" font-weight="600">50</text>
@@ -251,17 +251,17 @@
         <rect x="335" y="40" width="80" height="200" rx="4" fill="url(#barHot)"/>
         <text x="375" y="60" text-anchor="middle" font-size="13" fill="white" font-weight="600">100</text>
         <text x="375" y="268" text-anchor="middle" font-size="11" fill="#059669" font-weight="700">2-5pm</text>
-        <text x="375" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=5</text>
+        <text x="375" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=6</text>
 
         <rect x="445" y="90" width="80" height="150" rx="4" fill="url(#barHot)"/>
         <text x="485" y="110" text-anchor="middle" font-size="13" fill="white" font-weight="600">75</text>
         <text x="485" y="268" text-anchor="middle" font-size="11" fill="#059669" font-weight="700">5-9pm</text>
-        <text x="485" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=10</text>
+        <text x="485" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=11</text>
 
         <rect x="555" y="71" width="80" height="169" rx="4" fill="url(#barGrad)" opacity="0.7"/>
         <text x="595" y="91" text-anchor="middle" font-size="13" fill="white" font-weight="600">85</text>
         <text x="595" y="268" text-anchor="middle" font-size="11" fill="#666">9pm+</text>
-        <text x="595" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=8</text>
+        <text x="595" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=6</text>
 
         <!-- Annotations -->
         <rect x="110" y="4" width="90" height="18" rx="4" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
@@ -291,32 +291,32 @@
         </thead>
         <tbody>
           <tr class="warning-row">
-            <td class="time-cell">Breakfast (5–10 AM) <span class="warning-badge">STILL RESISTANT</span></td>
+            <td class="time-cell">Breakfast (5–10 AM) <span class="warning-badge">STABILIZING</span></td>
             <td style="color:#ef4444; font-weight:600;">18g:1u</td>
             <td style="color:#ef4444; font-weight:600;">80</td>
             <td>Holding</td>
-            <td style="font-size:12px;">Holding 18g:1u / 80 ISF. 77% hit rate; the 3 scorecard lows are stale (May 2 pre-fix x2, May 6 boundary case). May 7 32g:1u → nadir/end 122 (ok). May 8 ISF events: 1u from 158 → nadir 104, 0.5u from 115 → 115 — borderline but in-range; both starts were already low so any insulin was risky. No clear new signal to act on.</td>
+            <td style="font-size:12px;">Holding 18g:1u / 80 ISF — clearly stabilized. 90% hit rate (up from 77%). All ICR events May 5–11 landed in range; May 11 23g:1u → nadir 130, end 142. ISF events nadirs 104–117 (borderline but in). No action needed.</td>
           </tr>
           <tr>
             <td class="time-cell">Lunch (10 AM – 2 PM) <span class="caution-badge">MORE SENSITIVE</span></td>
-            <td>45g:1u</td>
+            <td>50g:1u</td>
             <td>100</td>
-            <td>Holding (watch)</td>
-            <td style="font-size:12px;">Holding 45g:1u / 100 ISF (eased 25→35→45 across May 7). May 8 was a 13g snack at 0.5u — no useful signal at the new ratio yet. The May 7 crash (33g+208 at 1.5u → nadir 73) that prompted the second loosen was at the OLD 35 ratio. Need a full week of post-deploy data to evaluate. If crashes persist at 45, this is the third consecutive week of needing to loosen — strongly suggests biological shift; endo touchpoint warranted.</td>
+            <td>Easing</td>
+            <td style="font-size:12px;">Loosened ICR 45→50. Mostly stabilizing, but May 10 47g:1u (matched published 45) → nadir 80 (end 209). May 11 at 118g:1u → nadir 121 (fine). Single transient dip below floor at the published ratio — asymmetry rule says treat seriously even though end was ok. Small step to 50; data could support holding but lean safer given the 3-week looser-recommendation streak. Endo touchpoint still warranted to assess biological shift.</td>
           </tr>
           <tr>
             <td class="time-cell">Afternoon (2–5 PM) <span class="caution-badge">STILL SENSITIVE</span></td>
             <td>18g:1u</td>
             <td>200</td>
-            <td>Easing</td>
-            <td style="font-size:12px;">Bumped ISF 150→200. May 8 1u correction from 316 → nadir 72, drop 244 = effective ISF ~244. Yesterday's bump to 150 was immediately disproven — going to 200 (still cautious vs effective 244 at n=1, but the signal is clear). ICR 18 holds — only one ICR event this week (May 7 15g:1u from start 102 was operator-deviation from already-low start).</td>
+            <td>Holding</td>
+            <td style="font-size:12px;">Holding 18g:1u / 200 ISF. May 9 bump moved us close to truth — May 11 ISF event 0.5u from 270 → nadir 150 (drop 120, effective ISF 240) confirms 200 is in the right ballpark. Only one post-fix event; need more data before another move. ICR 18 holds — afternoon ICR events still thin (n=2 with one operator-deviation).</td>
           </tr>
           <tr>
             <td class="time-cell">Dinner (5–9 PM) <span class="caution-badge">MORE SENSITIVE</span></td>
             <td>45g:1u</td>
             <td>150</td>
-            <td>Easing</td>
-            <td style="font-size:12px;">Loosened ICR 30→45 and ISF 100→150. Multiple crashes at just-deployed 30/100: May 7 1.5u for 48g (snack+meal) → CRASH 70; May 8 1.5u for 40g (26.7g:1u, ~published 30) → CRASH 72. Sensitivity ladder: 56g:1u ok, 48g:1u crashed, 28-26g:1u crashed → current sensitivity needs ~50g:1u or looser. 45 matches lunch; ISF 150 gives more correction headroom. Three consecutive refreshes have eased dinner — biological shift suspected; endo touchpoint warranted.</td>
+            <td>Holding</td>
+            <td style="font-size:12px;">Holding 45g:1u / 150 ISF — May 9 changes working. May 9 31g:1u → nadir 100 (right at floor, in), May 10 36g:1u → nadir 149 (solid). Both events used ratios TIGHTER than the published 45 and still landed safely — confirms 45 has appropriate headroom. ISF events small/noisy this week, no signal to act.</td>
           </tr>
           <tr>
             <td class="time-cell">Night (9 PM+)</td>
@@ -330,7 +330,7 @@
     </div>
   </div>
 
-  <p class="updated-badge">Updated May 9, 2026 &middot; Data from May 2–8</p>
+  <p class="updated-badge">Updated May 12, 2026 &middot; Data from May 5–11</p>
 </div>
 
 <script>
@@ -338,7 +338,7 @@
 // Generated by build.py from profiles.json — do not edit directly.
 const profiles = {
   breakfast:  { icr: 18, isf: 80,  label: 'Breakfast (5-10 AM)', resistant: true },
-  lunch:      { icr: 45, isf: 100,  label: 'Lunch (10 AM-2 PM)' },
+  lunch:      { icr: 50, isf: 100,  label: 'Lunch (10 AM-2 PM)' },
   afternoon:  { icr: 18, isf: 200,  label: 'Afternoon (2-5 PM)' },
   dinner:     { icr: 45, isf: 150,  label: 'Dinner (5-9 PM)' },
   night:      { icr: 20, isf: 169,  label: 'Night (9 PM+)' }
