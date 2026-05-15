@@ -395,9 +395,8 @@ function calculate() {
     document.getElementById('corrDetail').textContent = `${bgDrop} ÷ ${profile.isf} ISF`;
   }
 
-  // Total
-  const totalRaw = mealUnitsRaw + corrUnitsRaw;
-  const total = roundHalf(totalRaw);
+  // Total — sum already-rounded parts so displayed numbers always add up
+  const total = mealUnits + corrUnits;
 
   document.getElementById('totalDose').textContent = total.toFixed(1) + 'u';
   document.getElementById('totalDetail').textContent =
