@@ -134,7 +134,7 @@
 <body>
 <div class="container">
   <h1>Rowyn's Insulin Dosing Guide</h1>
-  <p class="subtitle">Based on Dexcom Clarity data, June 5–18, 2026 &middot; Correction factor + carb ratios from real meal responses</p>
+  <p class="subtitle">Based on Dexcom Clarity data, June 18 – July 1, 2026 &middot; Correction factor + carb ratios from real meal responses</p>
 
   <!-- Combined Calculator -->
   <div class="card calc-card" id="calculator">
@@ -195,7 +195,7 @@
   <!-- Chart -->
   <div class="card" id="isf-chart">
     <h2>BG Drop per 0.5u of Fast-Acting Insulin</h2>
-    <p style="font-size:12px; color:#666; margin-bottom:12px;">Updated Jun 18</p>
+    <p style="font-size:12px; color:#666; margin-bottom:12px;">Updated Jul 1</p>
     <div class="chart-container">
       <svg class="chart-svg" viewBox="0 0 700 300" preserveAspectRatio="xMidYMid meet">
         <defs>
@@ -238,15 +238,15 @@
 
         <text x="18" y="150" text-anchor="middle" font-size="11" fill="#666" transform="rotate(-90, 18, 150)">mg/dL drop per 0.5u</text>
 
-        <rect x="115" y="160" width="80" height="80" rx="4" fill="url(#barWarn)" opacity="0.8"/>
-        <text x="155" y="180" text-anchor="middle" font-size="13" fill="white" font-weight="600">40*</text>
+        <rect x="115" y="150" width="80" height="90" rx="4" fill="url(#barWarn)" opacity="0.8"/>
+        <text x="155" y="170" text-anchor="middle" font-size="13" fill="white" font-weight="600">45*</text>
         <text x="155" y="268" text-anchor="middle" font-size="11" fill="#dc2626" font-weight="700">5-10am</text>
-        <text x="155" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=21</text>
+        <text x="155" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=26</text>
 
-        <rect x="225" y="150" width="80" height="90" rx="4" fill="url(#barHot)"/>
-        <text x="265" y="170" text-anchor="middle" font-size="13" fill="white" font-weight="600">45</text>
-        <text x="265" y="268" text-anchor="middle" font-size="11" fill="#059669" font-weight="700">10am-2pm</text>
-        <text x="265" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=26</text>
+        <rect x="225" y="150" width="80" height="90" rx="4" fill="url(#barWarn)" opacity="0.8"/>
+        <text x="265" y="170" text-anchor="middle" font-size="13" fill="white" font-weight="600">45*</text>
+        <text x="265" y="268" text-anchor="middle" font-size="11" fill="#dc2626" font-weight="700">10am-2pm</text>
+        <text x="265" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=27</text>
 
         <rect x="335" y="40" width="80" height="200" rx="4" fill="url(#barHot)"/>
         <text x="375" y="60" text-anchor="middle" font-size="13" fill="white" font-weight="600">100</text>
@@ -256,22 +256,24 @@
         <rect x="445" y="90" width="80" height="150" rx="4" fill="url(#barHot)"/>
         <text x="485" y="110" text-anchor="middle" font-size="13" fill="white" font-weight="600">75</text>
         <text x="485" y="268" text-anchor="middle" font-size="11" fill="#059669" font-weight="700">5-9pm</text>
-        <text x="485" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=21</text>
+        <text x="485" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=18</text>
 
         <rect x="555" y="90" width="80" height="150" rx="4" fill="url(#barGrad)" opacity="0.7"/>
         <text x="595" y="110" text-anchor="middle" font-size="13" fill="white" font-weight="600">75</text>
         <text x="595" y="268" text-anchor="middle" font-size="11" fill="#666">9pm+</text>
-        <text x="595" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=13</text>
+        <text x="595" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=14</text>
 
         <!-- Annotations -->
         <rect x="110" y="4" width="90" height="18" rx="4" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
         <text x="155" y="16" text-anchor="middle" font-size="9" fill="#dc2626" font-weight="600">RESISTANT</text>
+        <rect x="220" y="4" width="90" height="18" rx="4" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
+        <text x="265" y="16" text-anchor="middle" font-size="9" fill="#dc2626" font-weight="600">RESISTANT</text>
 
         <rect x="324" y="4" width="102" height="18" rx="4" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1"/>
         <text x="375" y="16" text-anchor="middle" font-size="9" fill="#059669" font-weight="600">MOST SENSITIVE</text>
       </svg>
     </div>
-    <p class="chart-note">* 5-10am ISF is an estimate — corrections often underperform here; pre-bolus and tighter ICR matter more.</p>
+    <p class="chart-note">* 5-10am, 10am-2pm ISF is an estimate — corrections often underperform here; pre-bolus and tighter ICR matter more.</p>
   </div>
 
   <!-- Audit trail: per-window rationale for the current ratios -->
@@ -291,54 +293,54 @@
         </thead>
         <tbody>
           <tr class="warning-row">
-            <td class="time-cell">Breakfast (5–10 AM) <span class="warning-badge">STABILIZING</span></td>
+            <td class="time-cell">Breakfast (5–10 AM) <span class="warning-badge">BIMODAL</span></td>
             <td style="color:#ef4444; font-weight:600;">18g:1u</td>
-            <td style="color:#ef4444; font-weight:600;">80</td>
+            <td style="color:#ef4444; font-weight:600;">90</td>
             <td>Holding</td>
-            <td style="font-size:12px;">Holding 18g:1u / 80 ISF. Under endo's new 80–180 band, breakfast scored 71% TIR (3 lows, 3 highs) — balanced. The 6/15 nadir 76 and the 6/17 nadirs 78/75 clustered on 2–3 bad days that look like activity/illness rather than ratio-driven. Latest events landing in range (6/18 21g:0.5u → nadir 140).</td>
+            <td style="font-size:12px;">Held ICR 18; eased ISF 80→90 (small crash-protective half-step). 65% TIR under the 80–180 band, but bimodal: loose doses (ICR ~40) ran high (6 highs, ends 200–228) while aggressive small-meal doses crashed (6/24 23g:1.5u → nadir 52; 6/30 & 7/1 8–10g:1.5u → nadirs 98/86). Can't loosen ICR (highs) or tighten it (the crash) → hold. ISF median 104 is inflated by noisy 0.5u corrections; the two clean 1.0u corrections cluster ~100–112, and the 6/24 crash came from a 1.0u correction dropping 112 — so a gentle bump to 90 makes corrections safer without chasing the noisy median. ISF data thin (n=2 clean); revisit next refresh. Coaching: over-bolusing tiny breakfasts is a carb-count behavior, not a ratio miss.</td>
           </tr>
-          <tr>
-            <td class="time-cell">Lunch (10 AM – 2 PM) <span class="caution-badge">MORE SENSITIVE</span></td>
-            <td>45g:1u</td>
-            <td>90</td>
+          <tr class="warning-row">
+            <td class="time-cell">Lunch (10 AM – 2 PM) <span class="warning-badge">RUNS HIGH</span></td>
+            <td style="color:#ef4444; font-weight:600;">40g:1u</td>
+            <td style="color:#ef4444; font-weight:600;">90</td>
             <td>Tightening</td>
-            <td style="font-size:12px;">Eased ICR 50→45 and ISF 100→90 under endo's tightened 80–180 band. Lunch scored 54% TIR with 7 highs vs 5 lows — running slightly high. ISF effective median 87 matches the new 90 closely. ICR median 30 in the raw data reflects operator-deviation toward tighter dosing, not ratio truth — 45 is a small (10%) step that keeps safety margin. Adversarial review confirmed both moves defensible; the 0.5u dose granularity may mute the practical effect at typical correction sizes.</td>
+            <td style="font-size:12px;">Tightened ICR 45→40; held ISF 90. Worst window this period — 44% TIR, 14 highs, only 1 low, zero crashes. All 17 meal events peaked >180 and 13/17 ended >180. Median ICR 52 is the operator-deviation trap (caregivers dosed looser than published, which caused the highs); the clean full-unit events already median ICR 41 and still ran high — so add insulin by tightening to 40, don't chase the median up. No lows/crashes make the step safe. Style flipped sensitive→resistant: the old 'MORE SENSITIVE' badge understated that lunch runs high. ISF held — correction data bimodal (range 5–294) and 0.5u-noise-dominated; recomputed median 87 ≈ published 90, with a near-low 6/23 (nadir 79). Pre-bolus matters most here.</td>
           </tr>
           <tr>
-            <td class="time-cell">Afternoon (2–5 PM) <span class="caution-badge">STILL SENSITIVE</span></td>
+            <td class="time-cell">Afternoon (2–5 PM) <span class="caution-badge">BEST WINDOW</span></td>
             <td>18g:1u</td>
             <td>200</td>
             <td>Holding</td>
-            <td style="font-size:12px;">Holding 18g:1u / 200 ISF. Best window this period — 79% TIR under the new 80–180 band, only 1 high. Effective ISF median 151 (range 6–240, high variance). No clear signal to move; reassess next refresh.</td>
+            <td style="font-size:12px;">Holding 18g:1u / 200 ISF. Best window — 86% TIR, 1 low / 1 high. Median proposal (ICR→24, ISF→192) rejected: ICR rests on n=2 (one a noisy 0.5u), effectively n=1, too thin to move; ISF 192 ≈ 200 (within noise). One crash on 6/24 (nadir 54) from a 1.5u correction into start 367 — implied ISF ~209, on top of published 200, so not a systematic miss. Window is bimodal (ISF 16–274); hold and reassess.</td>
           </tr>
           <tr>
-            <td class="time-cell">Dinner (5–9 PM) <span class="caution-badge">RUNS HIGH</span></td>
+            <td class="time-cell">Dinner (5–9 PM) <span class="caution-badge">BIMODAL</span></td>
             <td>40g:1u</td>
             <td>150</td>
-            <td>Tightening</td>
-            <td style="font-size:12px;">Eased ICR 45→40 (NOT to 35 as initially considered). Original proposal to 35 was REFUTED by adversarial review: several 'high' events already nadired at 80–97 (e.g., 6/12 17g:0.5u → nadir 80 at effective ICR 34, 6/15 42g:0.5u → nadir 89). Pushing published ICR to 35 risked converting highs into lows. 40 is a smaller, defensible step. ISF held at 150 — n=3 isolated-correction events too thin (effective drops 112 and 155 already at/above 120). Will reassess ISF next refresh with more data.</td>
+            <td>Holding</td>
+            <td style="font-size:12px;">Held ICR 40 / ISF 150. Danger zone this period — 33% TIR with 3 CRASHES (6/20 →64, 6/23 →68, 6/24 →53 from start 90) plus 6 highs: genuinely bimodal, no single ratio serves it. Median ICR 38 tilts toward more insulin but is dragged down by noisy tiny-carb 0.5u reads (6/20 6g:0.5u → ICR12); adding insulin where corrections already crash is indefensible. ISF n=5 (two are 0.5u noise), and the 6/23 correction crashed to 68 — too thin and too risky to lower. Hold both; the bimodality looks situational (activity/meal composition) rather than a ratio miss — worth watching what differs on crash vs high dinners.</td>
           </tr>
           <tr>
             <td class="time-cell">Night (9 PM+)</td>
             <td>20g:1u</td>
             <td>150</td>
-            <td>Tightening</td>
-            <td style="font-size:12px;">Eased ISF 169→150 (NOT to 130 as initially considered). Original proposal was REFUTED: night data is bimodal — ~7 resistant nights + ~3 hyper-sensitive nights (one already nadir 74 from 0.5u at start 225 under current 169). Lowering ISF amplifies the crash-night tail without solving the resistant-night highs. A single number for the whole 21:00–05:00 window is a blunt tool given the bimodality. 150 is a smaller, safer half-step. ICR holds — no overnight meal events.</td>
+            <td>Holding</td>
+            <td style="font-size:12px;">Held ICR 20 (no overnight meals) / ISF 150. 50% TIR, 6 highs vs 1 low. Both the median (128) and the high count argue for lower ISF, but a real crash night blocks it: 6/21 02:37 1.0u correction → nadir 58. The 128 median is driven by 10/14 noisy 0.5u corrections; the clean 1.0u-only median is ~140 ≈ published 150. Window remains bimodal (resistant nights ~99–111 vs hypersensitive ~224–226) — a single lower number would over-correct the sensitive nights and re-create the crash. Hold; revisit if highs persist without new lows.</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <p class="updated-badge">Updated June 18, 2026 &middot; Data from June 5–18</p>
+  <p class="updated-badge">Updated July 1, 2026 &middot; Data from June 18–July 1</p>
 </div>
 
 <script>
 // Time-of-day profiles: ICR (g per unit) and ISF (mg/dL per unit)
 // Generated by build.py from profiles.json — do not edit directly.
 const profiles = {
-  breakfast:  { icr: 18, isf: 80,  label: 'Breakfast (5-10 AM)', resistant: true },
-  lunch:      { icr: 45, isf: 90,  label: 'Lunch (10 AM-2 PM)' },
+  breakfast:  { icr: 18, isf: 90,  label: 'Breakfast (5-10 AM)', resistant: true },
+  lunch:      { icr: 40, isf: 90,  label: 'Lunch (10 AM-2 PM)', resistant: true },
   afternoon:  { icr: 18, isf: 200,  label: 'Afternoon (2-5 PM)' },
   dinner:     { icr: 40, isf: 150,  label: 'Dinner (5-9 PM)' },
   night:      { icr: 20, isf: 150,  label: 'Night (9 PM+)' }
