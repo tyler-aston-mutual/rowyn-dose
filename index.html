@@ -134,7 +134,7 @@
 <body>
 <div class="container">
   <h1>Rowyn's Insulin Dosing Guide</h1>
-  <p class="subtitle">Based on Dexcom Clarity data, June 18 – July 1, 2026 &middot; Correction factor + carb ratios from real meal responses</p>
+  <p class="subtitle">Based on Dexcom Clarity data, August 10 – 23, 2026 &middot; Correction factor + carb ratios from real meal responses</p>
 
   <!-- Combined Calculator -->
   <div class="card calc-card" id="calculator">
@@ -195,7 +195,7 @@
   <!-- Chart -->
   <div class="card" id="isf-chart">
     <h2>BG Drop per 0.5u of Fast-Acting Insulin</h2>
-    <p style="font-size:12px; color:#666; margin-bottom:12px;">Updated Jul 1</p>
+    <p style="font-size:12px; color:#666; margin-bottom:12px;">Updated Aug 23</p>
     <div class="chart-container">
       <svg class="chart-svg" viewBox="0 0 700 300" preserveAspectRatio="xMidYMid meet">
         <defs>
@@ -215,65 +215,63 @@
 
         <line x1="100" y1="240" x2="650" y2="240" stroke="#999" stroke-width="1.5"/>
         <text x="95" y="244" text-anchor="end" font-size="11" fill="#999">0</text>
-        <line x1="100" y1="220" x2="650" y2="220" stroke="#eee" stroke-width="1"/>
-        <text x="95" y="224" text-anchor="end" font-size="11" fill="#999">10</text>
-        <line x1="100" y1="200" x2="650" y2="200" stroke="#eee" stroke-width="1"/>
-        <text x="95" y="204" text-anchor="end" font-size="11" fill="#999">20</text>
-        <line x1="100" y1="180" x2="650" y2="180" stroke="#eee" stroke-width="1"/>
-        <text x="95" y="184" text-anchor="end" font-size="11" fill="#999">30</text>
-        <line x1="100" y1="160" x2="650" y2="160" stroke="#eee" stroke-width="1"/>
-        <text x="95" y="164" text-anchor="end" font-size="11" fill="#999">40</text>
-        <line x1="100" y1="140" x2="650" y2="140" stroke="#eee" stroke-width="1"/>
-        <text x="95" y="144" text-anchor="end" font-size="11" fill="#999">50</text>
-        <line x1="100" y1="120" x2="650" y2="120" stroke="#eee" stroke-width="1"/>
-        <text x="95" y="124" text-anchor="end" font-size="11" fill="#999">60</text>
-        <line x1="100" y1="100" x2="650" y2="100" stroke="#eee" stroke-width="1"/>
-        <text x="95" y="104" text-anchor="end" font-size="11" fill="#999">70</text>
-        <line x1="100" y1="80" x2="650" y2="80" stroke="#eee" stroke-width="1"/>
-        <text x="95" y="84" text-anchor="end" font-size="11" fill="#999">80</text>
-        <line x1="100" y1="60" x2="650" y2="60" stroke="#eee" stroke-width="1"/>
-        <text x="95" y="64" text-anchor="end" font-size="11" fill="#999">90</text>
+        <line x1="100" y1="218" x2="650" y2="218" stroke="#eee" stroke-width="1"/>
+        <text x="95" y="222" text-anchor="end" font-size="11" fill="#999">10</text>
+        <line x1="100" y1="196" x2="650" y2="196" stroke="#eee" stroke-width="1"/>
+        <text x="95" y="200" text-anchor="end" font-size="11" fill="#999">20</text>
+        <line x1="100" y1="173" x2="650" y2="173" stroke="#eee" stroke-width="1"/>
+        <text x="95" y="177" text-anchor="end" font-size="11" fill="#999">30</text>
+        <line x1="100" y1="151" x2="650" y2="151" stroke="#eee" stroke-width="1"/>
+        <text x="95" y="155" text-anchor="end" font-size="11" fill="#999">40</text>
+        <line x1="100" y1="129" x2="650" y2="129" stroke="#eee" stroke-width="1"/>
+        <text x="95" y="133" text-anchor="end" font-size="11" fill="#999">50</text>
+        <line x1="100" y1="107" x2="650" y2="107" stroke="#eee" stroke-width="1"/>
+        <text x="95" y="111" text-anchor="end" font-size="11" fill="#999">60</text>
+        <line x1="100" y1="84" x2="650" y2="84" stroke="#eee" stroke-width="1"/>
+        <text x="95" y="88" text-anchor="end" font-size="11" fill="#999">70</text>
+        <line x1="100" y1="62" x2="650" y2="62" stroke="#eee" stroke-width="1"/>
+        <text x="95" y="66" text-anchor="end" font-size="11" fill="#999">80</text>
         <line x1="100" y1="40" x2="650" y2="40" stroke="#eee" stroke-width="1"/>
-        <text x="95" y="44" text-anchor="end" font-size="11" fill="#999">100</text>
+        <text x="95" y="44" text-anchor="end" font-size="11" fill="#999">90</text>
 
         <text x="18" y="150" text-anchor="middle" font-size="11" fill="#666" transform="rotate(-90, 18, 150)">mg/dL drop per 0.5u</text>
 
-        <rect x="115" y="150" width="80" height="90" rx="4" fill="url(#barWarn)" opacity="0.8"/>
-        <text x="155" y="170" text-anchor="middle" font-size="13" fill="white" font-weight="600">45*</text>
-        <text x="155" y="268" text-anchor="middle" font-size="11" fill="#dc2626" font-weight="700">5-10am</text>
-        <text x="155" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=26</text>
+        <rect x="115" y="140" width="80" height="100" rx="4" fill="url(#barGrad)"/>
+        <text x="155" y="160" text-anchor="middle" font-size="13" fill="white" font-weight="600">45</text>
+        <text x="155" y="268" text-anchor="middle" font-size="11" fill="#666">5-10am</text>
+        <text x="155" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=14</text>
 
-        <rect x="225" y="150" width="80" height="90" rx="4" fill="url(#barWarn)" opacity="0.8"/>
-        <text x="265" y="170" text-anchor="middle" font-size="13" fill="white" font-weight="600">45*</text>
+        <rect x="225" y="140" width="80" height="100" rx="4" fill="url(#barWarn)" opacity="0.8"/>
+        <text x="265" y="160" text-anchor="middle" font-size="13" fill="white" font-weight="600">45*</text>
         <text x="265" y="268" text-anchor="middle" font-size="11" fill="#dc2626" font-weight="700">10am-2pm</text>
-        <text x="265" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=27</text>
+        <text x="265" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=14</text>
 
-        <rect x="335" y="40" width="80" height="200" rx="4" fill="url(#barHot)"/>
-        <text x="375" y="60" text-anchor="middle" font-size="13" fill="white" font-weight="600">100</text>
-        <text x="375" y="268" text-anchor="middle" font-size="11" fill="#059669" font-weight="700">2-5pm</text>
-        <text x="375" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=14</text>
+        <rect x="335" y="51" width="80" height="189" rx="4" fill="url(#barWarn)" opacity="0.8"/>
+        <text x="375" y="71" text-anchor="middle" font-size="13" fill="white" font-weight="600">85*</text>
+        <text x="375" y="268" text-anchor="middle" font-size="11" fill="#dc2626" font-weight="700">2-5pm</text>
+        <text x="375" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=10</text>
 
-        <rect x="445" y="90" width="80" height="150" rx="4" fill="url(#barHot)"/>
-        <text x="485" y="110" text-anchor="middle" font-size="13" fill="white" font-weight="600">75</text>
+        <rect x="445" y="73" width="80" height="167" rx="4" fill="url(#barHot)"/>
+        <text x="485" y="93" text-anchor="middle" font-size="13" fill="white" font-weight="600">75</text>
         <text x="485" y="268" text-anchor="middle" font-size="11" fill="#059669" font-weight="700">5-9pm</text>
-        <text x="485" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=18</text>
+        <text x="485" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=13</text>
 
-        <rect x="555" y="90" width="80" height="150" rx="4" fill="url(#barGrad)" opacity="0.7"/>
-        <text x="595" y="110" text-anchor="middle" font-size="13" fill="white" font-weight="600">75</text>
+        <rect x="555" y="73" width="80" height="167" rx="4" fill="url(#barGrad)" opacity="0.7"/>
+        <text x="595" y="93" text-anchor="middle" font-size="13" fill="white" font-weight="600">75</text>
         <text x="595" y="268" text-anchor="middle" font-size="11" fill="#666">9pm+</text>
-        <text x="595" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=14</text>
+        <text x="595" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=22</text>
 
         <!-- Annotations -->
-        <rect x="110" y="4" width="90" height="18" rx="4" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
-        <text x="155" y="16" text-anchor="middle" font-size="9" fill="#dc2626" font-weight="600">RESISTANT</text>
         <rect x="220" y="4" width="90" height="18" rx="4" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
         <text x="265" y="16" text-anchor="middle" font-size="9" fill="#dc2626" font-weight="600">RESISTANT</text>
+        <rect x="330" y="4" width="90" height="18" rx="4" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
+        <text x="375" y="16" text-anchor="middle" font-size="9" fill="#dc2626" font-weight="600">RESISTANT</text>
 
-        <rect x="324" y="4" width="102" height="18" rx="4" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1"/>
-        <text x="375" y="16" text-anchor="middle" font-size="9" fill="#059669" font-weight="600">MOST SENSITIVE</text>
+        <rect x="434" y="4" width="102" height="18" rx="4" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1"/>
+        <text x="485" y="16" text-anchor="middle" font-size="9" fill="#059669" font-weight="600">MOST SENSITIVE</text>
       </svg>
     </div>
-    <p class="chart-note">* 5-10am, 10am-2pm ISF is an estimate — corrections often underperform here; pre-bolus and tighter ICR matter more.</p>
+    <p class="chart-note">* 10am-2pm, 2-5pm ISF is an estimate — corrections often underperform here; pre-bolus and tighter ICR matter more.</p>
   </div>
 
   <!-- Audit trail: per-window rationale for the current ratios -->
@@ -292,58 +290,58 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="warning-row">
-            <td class="time-cell">Breakfast (5–10 AM) <span class="warning-badge">BIMODAL</span></td>
-            <td style="color:#ef4444; font-weight:600;">18g:1u</td>
-            <td style="color:#ef4444; font-weight:600;">90</td>
+          <tr>
+            <td class="time-cell">Breakfast (5–10 AM)</td>
+            <td>18g:1u</td>
+            <td>90</td>
             <td>Holding</td>
-            <td style="font-size:12px;">Held ICR 18; eased ISF 80→90 (small crash-protective half-step). 65% TIR under the 80–180 band, but bimodal: loose doses (ICR ~40) ran high (6 highs, ends 200–228) while aggressive small-meal doses crashed (6/24 23g:1.5u → nadir 52; 6/30 & 7/1 8–10g:1.5u → nadirs 98/86). Can't loosen ICR (highs) or tighten it (the crash) → hold. ISF median 104 is inflated by noisy 0.5u corrections; the two clean 1.0u corrections cluster ~100–112, and the 6/24 crash came from a 1.0u correction dropping 112 — so a gentle bump to 90 makes corrections safer without chasing the noisy median. ISF data thin (n=2 clean); revisit next refresh. Coaching: over-bolusing tiny breakfasts is a carb-count behavior, not a ratio miss.</td>
+            <td style="font-size:12px;">Unchanged (1:18 / ISF 90) and performing best of any window — 12/14 meal clusters landed in range (86%), zero lows, median 4 h end 148. The 5–10 AM block itself runs 3% >180 with a median of 123, and 4–8 AM sits at 0% >180. Style dropped resistant→caution and the stale BIMODAL badge removed: the June bimodality (loose doses running high, aggressive small-meal doses crashing) did not reproduce this period. 10/14 clusters still peaked >180, but ends are clean, so that is spike shape, not a dose miss. Nothing to change here.</td>
           </tr>
           <tr class="warning-row">
             <td class="time-cell">Lunch (10 AM – 2 PM) <span class="warning-badge">RUNS HIGH</span></td>
-            <td style="color:#ef4444; font-weight:600;">40g:1u</td>
+            <td style="color:#ef4444; font-weight:600;">24g:1u</td>
             <td style="color:#ef4444; font-weight:600;">90</td>
             <td>Tightening</td>
-            <td style="font-size:12px;">Tightened ICR 45→40; held ISF 90. Worst window this period — 44% TIR, 14 highs, only 1 low, zero crashes. All 17 meal events peaked >180 and 13/17 ended >180. Median ICR 52 is the operator-deviation trap (caregivers dosed looser than published, which caused the highs); the clean full-unit events already median ICR 41 and still ran high — so add insulin by tightening to 40, don't chase the median up. No lows/crashes make the step safe. Style flipped sensitive→resistant: the old 'MORE SENSITIVE' badge understated that lunch runs high. ISF held — correction data bimodal (range 5–294) and 0.5u-noise-dominated; recomputed median 87 ≈ published 90, with a near-low 6/23 (nadir 79). Pre-bolus matters most here.</td>
+            <td style="font-size:12px;">ICR tightened 1:26→1:24 around Aug 19 (third step in the 1:45→1:40→…→1:26→1:24 sequence). Still the weakest window: 4/14 clusters in range (29%), 9/14 ended >180, median peak 224, median 4 h end 202. But it is genuinely improving — rescue insulin fell 0.88→0.57 u and meals peaking >180 went 18/19→11/14 vs the Jul 14–Aug 10 baseline. The pooled numbers understate it because they mix the 1:26 era with four caregiver under-doses at implied 1:29–1:44. Clusters actually dosed at 1:24 ended 242 / 172 / 174 / 163 — three of four fine. HOLDING 1:24 rather than stepping to 1:20: the change is only ~5 days old and a second simultaneous change would destroy attribution. 1:20 remains the pre-registered next step — only one lunch low occurred (8/14, nadir 72) and it followed 1.58 u of correction, not the meal ratio. Pre-bolus matters more here than the ratio does.</td>
+          </tr>
+          <tr class="warning-row">
+            <td class="time-cell">Afternoon (2–5 PM) <span class="warning-badge">RUNS HIGH</span></td>
+            <td style="color:#ef4444; font-weight:600;">18g:1u</td>
+            <td style="color:#ef4444; font-weight:600;">170</td>
+            <td>ISF change proposed</td>
+            <td style="font-size:12px;">PROPOSED: ISF 1:170 → 1:140 (not yet made on the pump — this field mirrors the pump). 2–5 PM is now the worst stretch of the day, having displaced the old 2 PM / 10 PM peaks: 14:00 / 15:00 / 16:00 run 51% / 60% / 64% >180 with medians 181 / 188 / 202, at 0% <80 in all three hours. It is the lunch tail — on days where 1 PM was >170 the 2–5 PM median was 235 vs 178 otherwise. 1:170 is by far the weakest correction factor of the day, so nothing clears it: Control-IQ delivered 0.00 u of auto-bolus at 4 PM across the entire 13.7 days despite 64% >180. At BG 202 the current factor gives 0.54 u; 1:140 gives 0.66 u. Style flipped sensitive→resistant and the BEST WINDOW badge removed — that was the June read and is now flatly wrong. Caveat when acting: this segment ends at 17:00 but its 5 h tail lands in the 19:00–20:00 dinner crash window, so watch that hour after the step. Meal clusters themselves are fine (60% in range, median end 128); the peaks, median 238 and the day's worst, are what the ISF change targets.</td>
           </tr>
           <tr>
-            <td class="time-cell">Afternoon (2–5 PM) <span class="caution-badge">BEST WINDOW</span></td>
-            <td>18g:1u</td>
-            <td>200</td>
-            <td>Holding</td>
-            <td style="font-size:12px;">Holding 18g:1u / 200 ISF. Best window — 86% TIR, 1 low / 1 high. Median proposal (ICR→24, ISF→192) rejected: ICR rests on n=2 (one a noisy 0.5u), effectively n=1, too thin to move; ISF 192 ≈ 200 (within noise). One crash on 6/24 (nadir 54) from a 1.5u correction into start 367 — implied ISF ~209, on top of published 200, so not a systematic miss. Window is bimodal (ISF 16–274); hold and reassess.</td>
-          </tr>
-          <tr>
-            <td class="time-cell">Dinner (5–9 PM) <span class="caution-badge">BIMODAL</span></td>
-            <td>40g:1u</td>
+            <td class="time-cell">Dinner (5–9 PM) <span class="caution-badge">LARGE MEALS CRASH</span></td>
+            <td>26g:1u</td>
             <td>150</td>
-            <td>Holding</td>
-            <td style="font-size:12px;">Held ICR 40 / ISF 150. Danger zone this period — 33% TIR with 3 CRASHES (6/20 →64, 6/23 →68, 6/24 →53 from start 90) plus 6 highs: genuinely bimodal, no single ratio serves it. Median ICR 38 tilts toward more insulin but is dragged down by noisy tiny-carb 0.5u reads (6/20 6g:0.5u → ICR12); adding insulin where corrections already crash is indefensible. ISF n=5 (two are 0.5u noise), and the 6/23 correction crashed to 68 — too thin and too risky to lower. Hold both; the bimodality looks situational (activity/meal composition) rather than a ratio miss — worth watching what differs on crash vs high dinners.</td>
+            <td>Holding ratio</td>
+            <td style="font-size:12px;">HOLD 1:26 — the problem is bolus SHAPE, not the ratio. Crashes are entirely carb-load dependent: dinners ≥50 g went <80 in 4/4, crashed <70 in 3/4, median nadir 64, median 4 h end 203; dinners <50 g went <80 in 1/9, crashed 0/9, median nadir 92, median end 178. The decisive evidence that the ratio is not at fault: the 67 g dinner on 8/16 was dosed at an implied 1:35 — 35% LESS insulin than published — and still crashed to 60, spending 50 minutes below 80. Nadirs cluster tightly at 19:00–19:30, ~1.5 h post-bolus, then rebound back over 180 by 22:00, which is what feeds the late-evening highs in the night window. PROPOSED: 60/40 extended bolus over 1.5–2 h for dinners ≥50 g. Extended bolus is currently near-unused — 5 of 206 boluses, only one with a real duration. Do NOT loosen 1:26: the <50 g dinners are fine on it (only 3/13 clusters ended >180) and loosening would worsen an already-high late evening. Target BG for this segment is 130 on the pump, higher than the 110 used elsewhere.</td>
           </tr>
           <tr>
-            <td class="time-cell">Night (9 PM+)</td>
-            <td>20g:1u</td>
+            <td class="time-cell">Night (9 PM+) <span class="caution-badge">LATE-EVE HIGHS</span></td>
+            <td>26g:1u</td>
             <td>150</td>
-            <td>Holding</td>
-            <td style="font-size:12px;">Held ICR 20 (no overnight meals) / ISF 150. 50% TIR, 6 highs vs 1 low. Both the median (128) and the high count argue for lower ISF, but a real crash night blocks it: 6/21 02:37 1.0u correction → nadir 58. The 128 median is driven by 10/14 noisy 0.5u corrections; the clean 1.0u-only median is ~140 ≈ published 150. Window remains bimodal (resistant nights ~99–111 vs hypersensitive ~224–226) — a single lower number would over-correct the sensitive nights and re-create the crash. Hold; revisit if highs persist without new lows.</td>
+            <td>Sleep schedule proposed</td>
+            <td style="font-size:12px;">Values shown are the pump's 5 PM segment (1:26 / ISF 150), which governs 9 PM–midnight. AFTER MIDNIGHT the pump switches to the 12 AM segment: ISF 90, i.e. corrections become substantially stronger — a 2 AM correction using 150 will under-dose. Under-dosing is the safe direction, which is why 150 is published here, but check the clock before correcting. Zero overnight meal boluses this period; all 22 events were corrections (16 of them 9 PM–midnight). PROPOSED: move the Control-IQ Sleep schedule start 9:00 PM → 11:00 PM. Sleep mode suppresses auto-correction, and it currently lands squarely on the highest hours of the day: Control-IQ delivered 0.16 u of auto-bolus across 21:00–07:59 over 13.7 days versus 10.63 u during the day, while 22:00 / 23:00 / 00:00 run 54% / 54% / 52% >180 with medians 200 / 195 / 184. Keep sleep mode for the small hours — 3–7 AM is 0–2% >180 with medians 105–126 and is doing its job. Watch 3–4 AM after the change: two dips (68, 70) already occurred there with no insulin on board.</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <p class="updated-badge">Updated July 1, 2026 &middot; Data from June 18–July 1</p>
+  <p class="updated-badge">Updated August 23, 2026 &middot; Data from August 10–23</p>
 </div>
 
 <script>
 // Time-of-day profiles: ICR (g per unit) and ISF (mg/dL per unit)
 // Generated by build.py from profiles.json — do not edit directly.
 const profiles = {
-  breakfast:  { icr: 18, isf: 90,  label: 'Breakfast (5-10 AM)', resistant: true },
-  lunch:      { icr: 40, isf: 90,  label: 'Lunch (10 AM-2 PM)', resistant: true },
-  afternoon:  { icr: 18, isf: 200,  label: 'Afternoon (2-5 PM)' },
-  dinner:     { icr: 40, isf: 150,  label: 'Dinner (5-9 PM)' },
-  night:      { icr: 20, isf: 150,  label: 'Night (9 PM+)' }
+  breakfast:  { icr: 18, isf: 90,  label: 'Breakfast (5-10 AM)' },
+  lunch:      { icr: 24, isf: 90,  label: 'Lunch (10 AM-2 PM)', resistant: true },
+  afternoon:  { icr: 18, isf: 170,  label: 'Afternoon (2-5 PM)', resistant: true },
+  dinner:     { icr: 26, isf: 150,  label: 'Dinner (5-9 PM)' },
+  night:      { icr: 26, isf: 150,  label: 'Night (9 PM+)' }
 };
 
 function roundHalf(n) {
