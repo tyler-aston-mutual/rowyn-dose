@@ -134,7 +134,7 @@
 <body>
 <div class="container">
   <h1>Rowyn's Insulin Dosing Guide</h1>
-  <p class="subtitle">Based on Dexcom Clarity data, August 10 – 23, 2026 &middot; Correction factor + carb ratios from real meal responses</p>
+  <p class="subtitle">Based on Dexcom Clarity data, September 7 – 20, 2026 &middot; Correction factor + carb ratios from real meal responses</p>
 
   <!-- Combined Calculator -->
   <div class="card calc-card" id="calculator">
@@ -151,7 +151,8 @@
       </div>
       <div class="calc-field">
         <label>Target BG (mg/dL)</label>
-        <input type="number" id="targetBG" value="150" min="70" max="250" step="10">
+        <input type="number" id="targetBG" value="110" min="70" max="250" step="10">
+        <p id="targetHint" style="font-size:11px; color:#666; margin:4px 0 0;">Pump target for this window</p>
       </div>
       <div class="calc-field">
         <label>Time of Day</label>
@@ -160,7 +161,7 @@
           <option value="lunch">Lunch (10 AM – 2 PM)</option>
           <option value="afternoon">Afternoon (2–5 PM)</option>
           <option value="dinner" selected>Dinner (5–9 PM)</option>
-          <option value="night">Night (8–11 PM)</option>
+          <option value="night">Night (9 PM+)</option>
         </select>
       </div>
     </div>
@@ -195,7 +196,7 @@
   <!-- Chart -->
   <div class="card" id="isf-chart">
     <h2>BG Drop per 0.5u of Fast-Acting Insulin</h2>
-    <p style="font-size:12px; color:#666; margin-bottom:12px;">Updated Aug 23</p>
+    <p style="font-size:12px; color:#666; margin-bottom:12px;">Updated Sep 20</p>
     <div class="chart-container">
       <svg class="chart-svg" viewBox="0 0 700 300" preserveAspectRatio="xMidYMid meet">
         <defs>
@@ -215,63 +216,61 @@
 
         <line x1="100" y1="240" x2="650" y2="240" stroke="#999" stroke-width="1.5"/>
         <text x="95" y="244" text-anchor="end" font-size="11" fill="#999">0</text>
-        <line x1="100" y1="218" x2="650" y2="218" stroke="#eee" stroke-width="1"/>
-        <text x="95" y="222" text-anchor="end" font-size="11" fill="#999">10</text>
-        <line x1="100" y1="196" x2="650" y2="196" stroke="#eee" stroke-width="1"/>
-        <text x="95" y="200" text-anchor="end" font-size="11" fill="#999">20</text>
-        <line x1="100" y1="173" x2="650" y2="173" stroke="#eee" stroke-width="1"/>
-        <text x="95" y="177" text-anchor="end" font-size="11" fill="#999">30</text>
-        <line x1="100" y1="151" x2="650" y2="151" stroke="#eee" stroke-width="1"/>
-        <text x="95" y="155" text-anchor="end" font-size="11" fill="#999">40</text>
-        <line x1="100" y1="129" x2="650" y2="129" stroke="#eee" stroke-width="1"/>
-        <text x="95" y="133" text-anchor="end" font-size="11" fill="#999">50</text>
-        <line x1="100" y1="107" x2="650" y2="107" stroke="#eee" stroke-width="1"/>
-        <text x="95" y="111" text-anchor="end" font-size="11" fill="#999">60</text>
-        <line x1="100" y1="84" x2="650" y2="84" stroke="#eee" stroke-width="1"/>
-        <text x="95" y="88" text-anchor="end" font-size="11" fill="#999">70</text>
-        <line x1="100" y1="62" x2="650" y2="62" stroke="#eee" stroke-width="1"/>
-        <text x="95" y="66" text-anchor="end" font-size="11" fill="#999">80</text>
+        <line x1="100" y1="215" x2="650" y2="215" stroke="#eee" stroke-width="1"/>
+        <text x="95" y="219" text-anchor="end" font-size="11" fill="#999">10</text>
+        <line x1="100" y1="190" x2="650" y2="190" stroke="#eee" stroke-width="1"/>
+        <text x="95" y="194" text-anchor="end" font-size="11" fill="#999">20</text>
+        <line x1="100" y1="165" x2="650" y2="165" stroke="#eee" stroke-width="1"/>
+        <text x="95" y="169" text-anchor="end" font-size="11" fill="#999">30</text>
+        <line x1="100" y1="140" x2="650" y2="140" stroke="#eee" stroke-width="1"/>
+        <text x="95" y="144" text-anchor="end" font-size="11" fill="#999">40</text>
+        <line x1="100" y1="115" x2="650" y2="115" stroke="#eee" stroke-width="1"/>
+        <text x="95" y="119" text-anchor="end" font-size="11" fill="#999">50</text>
+        <line x1="100" y1="90" x2="650" y2="90" stroke="#eee" stroke-width="1"/>
+        <text x="95" y="94" text-anchor="end" font-size="11" fill="#999">60</text>
+        <line x1="100" y1="65" x2="650" y2="65" stroke="#eee" stroke-width="1"/>
+        <text x="95" y="69" text-anchor="end" font-size="11" fill="#999">70</text>
         <line x1="100" y1="40" x2="650" y2="40" stroke="#eee" stroke-width="1"/>
-        <text x="95" y="44" text-anchor="end" font-size="11" fill="#999">90</text>
+        <text x="95" y="44" text-anchor="end" font-size="11" fill="#999">80</text>
 
         <text x="18" y="150" text-anchor="middle" font-size="11" fill="#666" transform="rotate(-90, 18, 150)">mg/dL drop per 0.5u</text>
 
-        <rect x="115" y="140" width="80" height="100" rx="4" fill="url(#barGrad)"/>
-        <text x="155" y="160" text-anchor="middle" font-size="13" fill="white" font-weight="600">45</text>
+        <rect x="115" y="128" width="80" height="112" rx="4" fill="url(#barGrad)"/>
+        <text x="155" y="148" text-anchor="middle" font-size="13" fill="white" font-weight="600">45</text>
         <text x="155" y="268" text-anchor="middle" font-size="11" fill="#666">5-10am</text>
         <text x="155" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=14</text>
 
-        <rect x="225" y="140" width="80" height="100" rx="4" fill="url(#barWarn)" opacity="0.8"/>
-        <text x="265" y="160" text-anchor="middle" font-size="13" fill="white" font-weight="600">45*</text>
+        <rect x="225" y="128" width="80" height="112" rx="4" fill="url(#barWarn)" opacity="0.8"/>
+        <text x="265" y="148" text-anchor="middle" font-size="13" fill="white" font-weight="600">45*</text>
         <text x="265" y="268" text-anchor="middle" font-size="11" fill="#dc2626" font-weight="700">10am-2pm</text>
-        <text x="265" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=14</text>
+        <text x="265" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=21</text>
 
-        <rect x="335" y="51" width="80" height="189" rx="4" fill="url(#barWarn)" opacity="0.8"/>
-        <text x="375" y="71" text-anchor="middle" font-size="13" fill="white" font-weight="600">85*</text>
-        <text x="375" y="268" text-anchor="middle" font-size="11" fill="#dc2626" font-weight="700">2-5pm</text>
-        <text x="375" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=10</text>
+        <rect x="335" y="65" width="80" height="175" rx="4" fill="url(#barGrad)"/>
+        <text x="375" y="85" text-anchor="middle" font-size="13" fill="white" font-weight="600">70</text>
+        <text x="375" y="268" text-anchor="middle" font-size="11" fill="#666">2-5pm</text>
+        <text x="375" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=6</text>
 
-        <rect x="445" y="73" width="80" height="167" rx="4" fill="url(#barHot)"/>
-        <text x="485" y="93" text-anchor="middle" font-size="13" fill="white" font-weight="600">75</text>
-        <text x="485" y="268" text-anchor="middle" font-size="11" fill="#059669" font-weight="700">5-9pm</text>
-        <text x="485" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=13</text>
+        <rect x="445" y="52" width="80" height="188" rx="4" fill="url(#barWarn)" opacity="0.8"/>
+        <text x="485" y="72" text-anchor="middle" font-size="13" fill="white" font-weight="600">75*</text>
+        <text x="485" y="268" text-anchor="middle" font-size="11" fill="#dc2626" font-weight="700">5-9pm</text>
+        <text x="485" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=17</text>
 
-        <rect x="555" y="73" width="80" height="167" rx="4" fill="url(#barGrad)" opacity="0.7"/>
-        <text x="595" y="93" text-anchor="middle" font-size="13" fill="white" font-weight="600">75</text>
+        <rect x="555" y="52" width="80" height="188" rx="4" fill="url(#barGrad)" opacity="0.7"/>
+        <text x="595" y="72" text-anchor="middle" font-size="13" fill="white" font-weight="600">75</text>
         <text x="595" y="268" text-anchor="middle" font-size="11" fill="#666">9pm+</text>
-        <text x="595" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=22</text>
+        <text x="595" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=32</text>
 
         <!-- Annotations -->
         <rect x="220" y="4" width="90" height="18" rx="4" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
         <text x="265" y="16" text-anchor="middle" font-size="9" fill="#dc2626" font-weight="600">RESISTANT</text>
-        <rect x="330" y="4" width="90" height="18" rx="4" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
-        <text x="375" y="16" text-anchor="middle" font-size="9" fill="#dc2626" font-weight="600">RESISTANT</text>
+        <rect x="440" y="4" width="90" height="18" rx="4" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
+        <text x="485" y="16" text-anchor="middle" font-size="9" fill="#dc2626" font-weight="600">RESISTANT</text>
 
-        <rect x="434" y="4" width="102" height="18" rx="4" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1"/>
-        <text x="485" y="16" text-anchor="middle" font-size="9" fill="#059669" font-weight="600">MOST SENSITIVE</text>
+        <rect x="544" y="4" width="102" height="18" rx="4" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1"/>
+        <text x="595" y="16" text-anchor="middle" font-size="9" fill="#059669" font-weight="600">MOST SENSITIVE</text>
       </svg>
     </div>
-    <p class="chart-note">* 10am-2pm, 2-5pm ISF is an estimate — corrections often underperform here; pre-bolus and tighter ICR matter more.</p>
+    <p class="chart-note">* 10am-2pm, 5-9pm ISF is an estimate — corrections often underperform here; pre-bolus and tighter ICR matter more.</p>
   </div>
 
   <!-- Audit trail: per-window rationale for the current ratios -->
@@ -295,53 +294,53 @@
             <td>18g:1u</td>
             <td>90</td>
             <td>Holding</td>
-            <td style="font-size:12px;">Unchanged (1:18 / ISF 90) and performing best of any window — 12/14 meal clusters landed in range (86%), zero lows, median 4 h end 148. The 5–10 AM block itself runs 3% >180 with a median of 123, and 4–8 AM sits at 0% >180. Style dropped resistant→caution and the stale BIMODAL badge removed: the June bimodality (loose doses running high, aggressive small-meal doses crashing) did not reproduce this period. 10/14 clusters still peaked >180, but ends are clean, so that is spike shape, not a dose miss. Nothing to change here.</td>
+            <td style="font-size:12px;">Unchanged (1:18 / ISF 90 / target 110) and still the best-performing window — 12/14 meal occasions ended in range at 4 h, median end 141, only 1 ended >180. The 5–10 AM block runs 8% >180 with a median of 124. One occasion ended <80 and one hit a nadir <70, so there is no room to tighten. Median peak is 200 and the pre-bolus slope is already +15 mg/dL/h on 11 of 25 boluses — that is spike shape, and pre-bolusing 10–15 min is the lever here, not the ratio. Nothing to change.</td>
           </tr>
           <tr class="warning-row">
             <td class="time-cell">Lunch (10 AM – 2 PM) <span class="warning-badge">RUNS HIGH</span></td>
             <td style="color:#ef4444; font-weight:600;">24g:1u</td>
             <td style="color:#ef4444; font-weight:600;">90</td>
-            <td>Tightening</td>
-            <td style="font-size:12px;">ICR tightened 1:26→1:24 around Aug 19 (third step in the 1:45→1:40→…→1:26→1:24 sequence). Still the weakest window: 4/14 clusters in range (29%), 9/14 ended >180, median peak 224, median 4 h end 202. But it is genuinely improving — rescue insulin fell 0.88→0.57 u and meals peaking >180 went 18/19→11/14 vs the Jul 14–Aug 10 baseline. The pooled numbers understate it because they mix the 1:26 era with four caregiver under-doses at implied 1:29–1:44. Clusters actually dosed at 1:24 ended 242 / 172 / 174 / 163 — three of four fine. HOLDING 1:24 rather than stepping to 1:20: the change is only ~5 days old and a second simultaneous change would destroy attribution. 1:20 remains the pre-registered next step — only one lunch low occurred (8/14, nadir 72) and it followed 1.58 u of correction, not the meal ratio. Pre-bolus matters more here than the ratio does.</td>
-          </tr>
-          <tr class="warning-row">
-            <td class="time-cell">Afternoon (2–5 PM) <span class="warning-badge">RUNS HIGH</span></td>
-            <td style="color:#ef4444; font-weight:600;">18g:1u</td>
-            <td style="color:#ef4444; font-weight:600;">170</td>
-            <td>ISF change proposed</td>
-            <td style="font-size:12px;">PROPOSED: ISF 1:170 → 1:140 (not yet made on the pump — this field mirrors the pump). 2–5 PM is now the worst stretch of the day, having displaced the old 2 PM / 10 PM peaks: 14:00 / 15:00 / 16:00 run 51% / 60% / 64% >180 with medians 181 / 188 / 202, at 0% <80 in all three hours. It is the lunch tail — on days where 1 PM was >170 the 2–5 PM median was 235 vs 178 otherwise. 1:170 is by far the weakest correction factor of the day, so nothing clears it: Control-IQ delivered 0.00 u of auto-bolus at 4 PM across the entire 13.7 days despite 64% >180. At BG 202 the current factor gives 0.54 u; 1:140 gives 0.66 u. Style flipped sensitive→resistant and the BEST WINDOW badge removed — that was the June read and is now flatly wrong. Caveat when acting: this segment ends at 17:00 but its 5 h tail lands in the 19:00–20:00 dinner crash window, so watch that hour after the step. Meal clusters themselves are fine (60% in range, median end 128); the peaks, median 238 and the day's worst, are what the ISF change targets.</td>
+            <td>1:20 proposed</td>
+            <td style="font-size:12px;">Weakest window of the day and now the clearest change to make. 7/21 meal occasions ended in range; 14/21 ended >180; BG went 142 -> 188 median over 4 h (+54). Zero ended <80 and only 1 of 50 lunch boluses hit a nadir <70, so there is no hypo cost holding it back. Carb entry is clean (implied ratio 24.0 = published), so this reads at face value. The 5 h reconciliation on food insulin alone points to ~1:16, and that is AFTER roughly 1.1 u of extra correction insulin per meal went in. PROPOSED: 1:24 -> 1:20 (not yet made on the pump — this field mirrors the pump). This is a deliberate half-step toward what the data implies, matching the 1:35 -> 1:26 -> 1:24 pattern. It should also fix the 2–5 PM block, which runs 60% >180 on lunch tail rather than on any afternoon dosing problem.</td>
           </tr>
           <tr>
-            <td class="time-cell">Dinner (5–9 PM) <span class="caution-badge">LARGE MEALS CRASH</span></td>
-            <td>26g:1u</td>
-            <td>150</td>
-            <td>Holding ratio</td>
-            <td style="font-size:12px;">HOLD 1:26 — the problem is bolus SHAPE, not the ratio. Crashes are entirely carb-load dependent: dinners ≥50 g went <80 in 4/4, crashed <70 in 3/4, median nadir 64, median 4 h end 203; dinners <50 g went <80 in 1/9, crashed 0/9, median nadir 92, median end 178. The decisive evidence that the ratio is not at fault: the 67 g dinner on 8/16 was dosed at an implied 1:35 — 35% LESS insulin than published — and still crashed to 60, spending 50 minutes below 80. Nadirs cluster tightly at 19:00–19:30, ~1.5 h post-bolus, then rebound back over 180 by 22:00, which is what feeds the late-evening highs in the night window. PROPOSED: 60/40 extended bolus over 1.5–2 h for dinners ≥50 g. Extended bolus is currently near-unused — 5 of 206 boluses, only one with a real duration. Do NOT loosen 1:26: the <50 g dinners are fine on it (only 3/13 clusters ended >180) and loosening would worsen an already-high late evening. Target BG for this segment is 130 on the pump, higher than the 110 used elsewhere.</td>
+            <td class="time-cell">Afternoon (2–5 PM)</td>
+            <td>18g:1u</td>
+            <td>140</td>
+            <td>ISF 1:140 holding</td>
+            <td style="font-size:12px;">SYNCED: ISF is 1:140, made on the pump 2026-08-24. This field read 1:170 for four weeks after the change — caregivers correcting from the guide were getting ~59% of the pump's dose at this hour. Fixed 2026-09-20. The change worked: across Aug 24 – Sep 4 the 14:00 / 15:00 / 16:00 hours fell from 51/60/65% >180 to 27/34/36%, and afternoon meal occasions are now the cleanest of the day — 6/6 ended in range, median BG 165 -> 144 (-31), zero >180, zero <80. Style dropped resistant->caution and the RUNS HIGH badge removed on that evidence. The 2–5 PM CGM block still reads 60% >180, but that is lunch arriving, not afternoon dosing: the fix belongs in the lunch ratio. Do not tighten this window.</td>
+          </tr>
+          <tr class="warning-row">
+            <td class="time-cell">Dinner (5–9 PM) <span class="warning-badge">RUNS HIGH</span></td>
+            <td style="color:#ef4444; font-weight:600;">26g:1u</td>
+            <td style="color:#ef4444; font-weight:600;">150</td>
+            <td>1:22 proposed</td>
+            <td style="font-size:12px;">REVERSED FROM AUGUST: the old LARGE MEALS CRASH warning is retired. Over Sep 7–20 there were ZERO nadirs <70 across 34 dinner boluses and zero occasions ending <80, while 13/17 ended >180 with median BG 174 -> 202 over 4 h. Dinner now runs high, not low, and the August guidance would push caregivers to under-dose it. 5 h reconciliation on food insulin alone points to ~1:22. PROPOSED: 1:26 -> 1:22 (not yet made on the pump — this field mirrors the pump). Two things matter as much as the ratio: 17 of 32 dinner boluses were given when BG was ALREADY >180 (median BG at bolus 185), so pre-bolus ~15 min and do not start dinner high; and this window's tail is what fills the 9 PM–midnight block, which runs 67% >180. Extended bolus is still effectively untested — 4 uses in 13 days, only one a real 60/40 split. Target BG for this segment is 130 on the pump, higher than the 110 used earlier in the day.</td>
           </tr>
           <tr>
             <td class="time-cell">Night (9 PM+) <span class="caution-badge">LATE-EVE HIGHS</span></td>
             <td>26g:1u</td>
             <td>150</td>
-            <td>Sleep schedule proposed</td>
-            <td style="font-size:12px;">Values shown are the pump's 5 PM segment (1:26 / ISF 150), which governs 9 PM–midnight. AFTER MIDNIGHT the pump switches to the 12 AM segment: ISF 90, i.e. corrections become substantially stronger — a 2 AM correction using 150 will under-dose. Under-dosing is the safe direction, which is why 150 is published here, but check the clock before correcting. Zero overnight meal boluses this period; all 22 events were corrections (16 of them 9 PM–midnight). PROPOSED: move the Control-IQ Sleep schedule start 9:00 PM → 11:00 PM. Sleep mode suppresses auto-correction, and it currently lands squarely on the highest hours of the day: Control-IQ delivered 0.16 u of auto-bolus across 21:00–07:59 over 13.7 days versus 10.63 u during the day, while 22:00 / 23:00 / 00:00 run 54% / 54% / 52% >180 with medians 200 / 195 / 184. Keep sleep mode for the small hours — 3–7 AM is 0–2% >180 with medians 105–126 and is doing its job. Watch 3–4 AM after the change: two dips (68, 70) already occurred there with no insulin on board.</td>
+            <td>Sleep 9 PM restored</td>
+            <td style="font-size:12px;">Values shown are the pump's 5 PM segment (1:26 / ISF 150 / target 130), which governs 9 PM–midnight. AFTER MIDNIGHT the pump switches to the 12 AM segment: ISF 90 and target 110, i.e. corrections become substantially stronger — a 2 AM correction using 150/130 will under-dose. Under-dosing is the safe direction, which is why the evening values are published here, but check the clock before correcting. 31 of the 32 events this period were corrections, not meals. The Sleep schedule was moved back to 9:00 PM around Sep 5 and it WORKED: 8 PM–midnight basal went 0.47 -> 0.80 u/night and the carb-free evening rise fell from +45 to +32 (nights rising >60 mg/dL: 5/12 -> 2/12). KEEP the 9 PM start. The 9 PM–midnight block still reads 67% >180 only because dinner hands it off high — that is a dinner-ratio problem, not an evening one. Small hours are healthy and must be protected: 3–8 AM is 0% >180 at a median of 117, but 6 of 13 nights dipped below 80 (nadirs 67–81), so do NOT tighten anything that acts overnight.</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <p class="updated-badge">Updated August 23, 2026 &middot; Data from August 10–23</p>
+  <p class="updated-badge">Updated September 20, 2026 &middot; Data from September 7–20</p>
 </div>
 
 <script>
 // Time-of-day profiles: ICR (g per unit) and ISF (mg/dL per unit)
 // Generated by build.py from profiles.json — do not edit directly.
 const profiles = {
-  breakfast:  { icr: 18, isf: 90,  label: 'Breakfast (5-10 AM)' },
-  lunch:      { icr: 24, isf: 90,  label: 'Lunch (10 AM-2 PM)', resistant: true },
-  afternoon:  { icr: 18, isf: 170,  label: 'Afternoon (2-5 PM)', resistant: true },
-  dinner:     { icr: 26, isf: 150,  label: 'Dinner (5-9 PM)' },
-  night:      { icr: 26, isf: 150,  label: 'Night (9 PM+)' }
+  breakfast:  { icr: 18, isf: 90, target: 110,  label: 'Breakfast (5-10 AM)' },
+  lunch:      { icr: 24, isf: 90, target: 110,  label: 'Lunch (10 AM-2 PM)', resistant: true },
+  afternoon:  { icr: 18, isf: 140, target: 110,  label: 'Afternoon (2-5 PM)' },
+  dinner:     { icr: 26, isf: 150, target: 130,  label: 'Dinner (5-9 PM)', resistant: true },
+  night:      { icr: 26, isf: 150, target: 130,  label: 'Night (9 PM+)' }
 };
 
 function roundHalf(n) {
@@ -356,12 +355,18 @@ function timeKeyForHour(hour) {
   return 'night';
 }
 
+function syncTarget() {
+  const profile = profiles[document.getElementById('timeOfDay').value];
+  document.getElementById('targetBG').value = profile.target;
+  document.getElementById('targetHint').textContent = `Pump target for this window: ${profile.target}`;
+}
+
 function calculate() {
-  const carbs = parseFloat(document.getElementById('mealCarbs').value) || 0;
-  const currentBG = parseFloat(document.getElementById('currentBG').value) || 0;
-  const targetBG = parseFloat(document.getElementById('targetBG').value) || 150;
   const timeKey = document.getElementById('timeOfDay').value;
   const profile = profiles[timeKey];
+  const carbs = parseFloat(document.getElementById('mealCarbs').value) || 0;
+  const currentBG = parseFloat(document.getElementById('currentBG').value) || 0;
+  const targetBG = parseFloat(document.getElementById('targetBG').value) || profile.target;
 
   // Show selected window prominently in the result card; flag if it doesn't match the clock
   document.getElementById('calcTimeLabel').textContent = profile.label;
@@ -407,10 +412,14 @@ function calculate() {
 ['mealCarbs', 'currentBG', 'targetBG'].forEach(id => {
   document.getElementById(id).addEventListener('input', calculate);
 });
-document.getElementById('timeOfDay').addEventListener('change', calculate);
+document.getElementById('timeOfDay').addEventListener('change', () => {
+  syncTarget();
+  calculate();
+});
 
 // Auto-detect time of day and set dropdown
 document.getElementById('timeOfDay').value = timeKeyForHour(new Date().getHours());
+syncTarget();
 calculate();
 </script>
 </body>
