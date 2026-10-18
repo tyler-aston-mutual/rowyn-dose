@@ -134,7 +134,7 @@
 <body>
 <div class="container">
   <h1>Rowyn's Insulin Dosing Guide</h1>
-  <p class="subtitle">Based on Dexcom Clarity data, September 7 – 20, 2026 &middot; Correction factor + carb ratios from real meal responses</p>
+  <p class="subtitle">Based on Dexcom Clarity data, September 21 – October 18, 2026 &middot; Correction factor + carb ratios from real meal responses</p>
 
   <!-- Combined Calculator -->
   <div class="card calc-card" id="calculator">
@@ -196,7 +196,7 @@
   <!-- Chart -->
   <div class="card" id="isf-chart">
     <h2>BG Drop per 0.5u of Fast-Acting Insulin</h2>
-    <p style="font-size:12px; color:#666; margin-bottom:12px;">Updated Sep 20</p>
+    <p style="font-size:12px; color:#666; margin-bottom:12px;">Updated Oct 18</p>
     <div class="chart-container">
       <svg class="chart-svg" viewBox="0 0 700 300" preserveAspectRatio="xMidYMid meet">
         <defs>
@@ -235,34 +235,34 @@
 
         <text x="18" y="150" text-anchor="middle" font-size="11" fill="#666" transform="rotate(-90, 18, 150)">mg/dL drop per 0.5u</text>
 
-        <rect x="115" y="128" width="80" height="112" rx="4" fill="url(#barGrad)"/>
-        <text x="155" y="148" text-anchor="middle" font-size="13" fill="white" font-weight="600">45</text>
-        <text x="155" y="268" text-anchor="middle" font-size="11" fill="#666">5-10am</text>
-        <text x="155" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=14</text>
+        <rect x="115" y="128" width="80" height="112" rx="4" fill="url(#barWarn)" opacity="0.8"/>
+        <text x="155" y="148" text-anchor="middle" font-size="13" fill="white" font-weight="600">45*</text>
+        <text x="155" y="268" text-anchor="middle" font-size="11" fill="#dc2626" font-weight="700">5-10am</text>
+        <text x="155" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=34</text>
 
-        <rect x="225" y="128" width="80" height="112" rx="4" fill="url(#barWarn)" opacity="0.8"/>
-        <text x="265" y="148" text-anchor="middle" font-size="13" fill="white" font-weight="600">45*</text>
-        <text x="265" y="268" text-anchor="middle" font-size="11" fill="#dc2626" font-weight="700">10am-2pm</text>
-        <text x="265" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=21</text>
+        <rect x="225" y="128" width="80" height="112" rx="4" fill="url(#barGrad)"/>
+        <text x="265" y="148" text-anchor="middle" font-size="13" fill="white" font-weight="600">45</text>
+        <text x="265" y="268" text-anchor="middle" font-size="11" fill="#666">10am-2pm</text>
+        <text x="265" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=38</text>
 
         <rect x="335" y="65" width="80" height="175" rx="4" fill="url(#barGrad)"/>
         <text x="375" y="85" text-anchor="middle" font-size="13" fill="white" font-weight="600">70</text>
         <text x="375" y="268" text-anchor="middle" font-size="11" fill="#666">2-5pm</text>
-        <text x="375" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=6</text>
+        <text x="375" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=17</text>
 
         <rect x="445" y="52" width="80" height="188" rx="4" fill="url(#barWarn)" opacity="0.8"/>
         <text x="485" y="72" text-anchor="middle" font-size="13" fill="white" font-weight="600">75*</text>
         <text x="485" y="268" text-anchor="middle" font-size="11" fill="#dc2626" font-weight="700">5-9pm</text>
-        <text x="485" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=17</text>
+        <text x="485" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=32</text>
 
         <rect x="555" y="52" width="80" height="188" rx="4" fill="url(#barGrad)" opacity="0.7"/>
         <text x="595" y="72" text-anchor="middle" font-size="13" fill="white" font-weight="600">75</text>
         <text x="595" y="268" text-anchor="middle" font-size="11" fill="#666">9pm+</text>
-        <text x="595" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=32</text>
+        <text x="595" y="281" text-anchor="middle" font-size="10" fill="#bbb">n=77</text>
 
         <!-- Annotations -->
-        <rect x="220" y="4" width="90" height="18" rx="4" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
-        <text x="265" y="16" text-anchor="middle" font-size="9" fill="#dc2626" font-weight="600">RESISTANT</text>
+        <rect x="110" y="4" width="90" height="18" rx="4" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
+        <text x="155" y="16" text-anchor="middle" font-size="9" fill="#dc2626" font-weight="600">RESISTANT</text>
         <rect x="440" y="4" width="90" height="18" rx="4" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
         <text x="485" y="16" text-anchor="middle" font-size="9" fill="#dc2626" font-weight="600">RESISTANT</text>
 
@@ -270,7 +270,7 @@
         <text x="595" y="16" text-anchor="middle" font-size="9" fill="#059669" font-weight="600">MOST SENSITIVE</text>
       </svg>
     </div>
-    <p class="chart-note">* 10am-2pm, 5-9pm ISF is an estimate — corrections often underperform here; pre-bolus and tighter ICR matter more.</p>
+    <p class="chart-note">* 5-10am, 5-9pm ISF is an estimate — corrections often underperform here; pre-bolus and tighter ICR matter more.</p>
   </div>
 
   <!-- Audit trail: per-window rationale for the current ratios -->
@@ -289,55 +289,55 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="time-cell">Breakfast (5–10 AM)</td>
-            <td>18g:1u</td>
-            <td>90</td>
-            <td>Holding</td>
-            <td style="font-size:12px;">Unchanged (1:18 / ISF 90 / target 110) and still the best-performing window — 12/14 meal occasions ended in range at 4 h, median end 141, only 1 ended >180. The 5–10 AM block runs 8% >180 with a median of 124. One occasion ended <80 and one hit a nadir <70, so there is no room to tighten. Median peak is 200 and the pre-bolus slope is already +15 mg/dL/h on 11 of 25 boluses — that is spike shape, and pre-bolusing 10–15 min is the lever here, not the ratio. Nothing to change.</td>
-          </tr>
           <tr class="warning-row">
-            <td class="time-cell">Lunch (10 AM – 2 PM) <span class="warning-badge">RUNS HIGH</span></td>
-            <td style="color:#ef4444; font-weight:600;">24g:1u</td>
+            <td class="time-cell">Breakfast (5–10 AM) <span class="warning-badge">RUNS HIGH</span></td>
+            <td style="color:#ef4444; font-weight:600;">18g:1u</td>
             <td style="color:#ef4444; font-weight:600;">90</td>
-            <td>1:20 proposed</td>
-            <td style="font-size:12px;">Weakest window of the day and now the clearest change to make. 7/21 meal occasions ended in range; 14/21 ended >180; BG went 142 -> 188 median over 4 h (+54). Zero ended <80 and only 1 of 50 lunch boluses hit a nadir <70, so there is no hypo cost holding it back. Carb entry is clean (implied ratio 24.0 = published), so this reads at face value. The 5 h reconciliation on food insulin alone points to ~1:16, and that is AFTER roughly 1.1 u of extra correction insulin per meal went in. PROPOSED: 1:24 -> 1:20 (not yet made on the pump — this field mirrors the pump). This is a deliberate half-step toward what the data implies, matching the 1:35 -> 1:26 -> 1:24 pattern. It should also fix the 2–5 PM block, which runs 60% >180 on lunch tail rather than on any afternoon dosing problem.</td>
+            <td>1:15 proposed</td>
+            <td style="font-size:12px;">Was the steadiest window in September (only 1 of 14 breakfasts ended above 180); now running high and getting worse. Same ~20 g breakfast every morning — counts confirmed accurate, no unlogged snacks or milk, not sick — but it needs more correction insulin each week: median 8 AM–noon corrections 0.26 u (Sep 28–Oct 4) -> 0.67 u (Oct 5–11) -> 1.49 u (Oct 12–18), with median morning peaks 207 -> 225 -> 272. Oct 12–18: 6 of 9 breakfasts ended above 180 at 4 h. Corrections underperform in this window (Oct 18: 2.3 u of corrections by 10:42 and BG still 299 at 11 AM), so the fix belongs in the meal ratio, not in more corrections. Bolus timing is already good — BG was flat or falling at the bolus on most mornings. PROPOSED: 1:18 -> 1:15 (not yet made on the pump — this field mirrors the pump). The 12 AM segment's carb ratio only affects meal boluses, so it does not change anything overnight. Do not change this segment's ISF 90, which also governs midnight–5 AM.</td>
+          </tr>
+          <tr>
+            <td class="time-cell">Lunch (10 AM – 2 PM) <span class="caution-badge">POST-LUNCH DIPS</span></td>
+            <td>20g:1u</td>
+            <td>90</td>
+            <td>1:20 working</td>
+            <td style="font-size:12px;">SYNCED 2026-10-18: the pump has run 1:20 since Sep 20, but this guide showed 1:24 until today. The change WORKED: lunches ending above 180 at 4 h fell from 13 of 20 (Sep 7–20) to 10 of 38, the median 4-h change went from +63 to +4, and the 2–5 PM block — which was mostly lunch carrying over — dropped from 60% to 27% of time above 180. Style dropped resistant -> caution and the RUNS HIGH badge was retired on that evidence. The cost: 3 short lows around 1:30 PM (58, 63 and 66 mg/dL; 10–15 min each, on Sep 25, Oct 4 and Oct 7), all on days when lunch was grazed with several boluses close together. Watch BG after lunch on grazing days. Keep 1:20; do not go stronger.</td>
           </tr>
           <tr>
             <td class="time-cell">Afternoon (2–5 PM)</td>
             <td>18g:1u</td>
             <td>140</td>
-            <td>ISF 1:140 holding</td>
-            <td style="font-size:12px;">SYNCED: ISF is 1:140, made on the pump 2026-08-24. This field read 1:170 for four weeks after the change — caregivers correcting from the guide were getting ~59% of the pump's dose at this hour. Fixed 2026-09-20. The change worked: across Aug 24 – Sep 4 the 14:00 / 15:00 / 16:00 hours fell from 51/60/65% >180 to 27/34/36%, and afternoon meal occasions are now the cleanest of the day — 6/6 ended in range, median BG 165 -> 144 (-31), zero >180, zero <80. Style dropped resistant->caution and the RUNS HIGH badge removed on that evidence. The 2–5 PM CGM block still reads 60% >180, but that is lunch arriving, not afternoon dosing: the fix belongs in the lunch ratio. Do not tighten this window.</td>
+            <td>Holding</td>
+            <td style="font-size:12px;">Holding at 1:18 / ISF 1:140. With lunch fixed, the 2–5 PM block fell from 60% to 27% of time above 180 (median 188 -> 154), confirming its highs were lunch carrying over, not afternoon dosing. No afternoon snack ended below 80 or dipped below 70. Afternoon snacks score worse on paper (8 of 17 in range at 4 h), but the 4-h mark lands after the dinner bolus, so those numbers mostly measure dinner. Do not change this window.</td>
           </tr>
           <tr class="warning-row">
             <td class="time-cell">Dinner (5–9 PM) <span class="warning-badge">RUNS HIGH</span></td>
             <td style="color:#ef4444; font-weight:600;">26g:1u</td>
             <td style="color:#ef4444; font-weight:600;">150</td>
             <td>1:22 proposed</td>
-            <td style="font-size:12px;">REVERSED FROM AUGUST: the old LARGE MEALS CRASH warning is retired. Over Sep 7–20 there were ZERO nadirs <70 across 34 dinner boluses and zero occasions ending <80, while 13/17 ended >180 with median BG 174 -> 202 over 4 h. Dinner now runs high, not low, and the August guidance would push caregivers to under-dose it. 5 h reconciliation on food insulin alone points to ~1:22. PROPOSED: 1:26 -> 1:22 (not yet made on the pump — this field mirrors the pump). Two things matter as much as the ratio: 17 of 32 dinner boluses were given when BG was ALREADY >180 (median BG at bolus 185), so pre-bolus ~15 min and do not start dinner high; and this window's tail is what fills the 9 PM–midnight block, which runs 67% >180. Extended bolus is still effectively untested — 4 uses in 13 days, only one a real 60/40 split. Target BG for this segment is 130 on the pump, higher than the 110 used earlier in the day.</td>
+            <td style="font-size:12px;">Still the weakest meal ratio and the clearest change to make. Sep 21–Oct 18: 16 of 32 dinners ended above 180 at 4 h (median +26 mg/dL), none ended below 80, and none dipped below 70 — 0 of 48 dinners since Sep 7. 5–8 PM runs 46% of time above 180, 8–9 PM 52%, 9 PM–midnight 57%. PROPOSED: 1:26 -> 1:22 (not yet made on the pump — this field mirrors the pump). Fixing dinner also protects the night: big evening corrections are what drive the early-morning dips (see Night). Bolus before eating starts: median BG at the dinner bolus improved (184 -> 167) and fewer were given above 180 (55% -> 41%), but 13 of 32 dinners were bolused while BG was already climbing, and the Oct 17 dinner (46 g, bolused while rising) peaked at 350. Extended bolus is still effectively untested (3 dinner uses, each 35–40 min with 82–89% up front — none a 60/40 split over 2 h). Target BG for this segment is 130 on the pump, higher than the 110 used earlier in the day.</td>
           </tr>
           <tr>
-            <td class="time-cell">Night (9 PM+) <span class="caution-badge">LATE-EVE HIGHS</span></td>
+            <td class="time-cell">Night (9 PM+) <span class="caution-badge">EARLY-AM DIPS</span></td>
             <td>26g:1u</td>
             <td>150</td>
-            <td>Sleep 9 PM restored</td>
-            <td style="font-size:12px;">Values shown are the pump's 5 PM segment (1:26 / ISF 150 / target 130), which governs 9 PM–midnight. AFTER MIDNIGHT the pump switches to the 12 AM segment: ISF 90 and target 110, i.e. corrections become substantially stronger — a 2 AM correction using 150/130 will under-dose. Under-dosing is the safe direction, which is why the evening values are published here, but check the clock before correcting. 31 of the 32 events this period were corrections, not meals. The Sleep schedule was moved back to 9:00 PM around Sep 5 and it WORKED: 8 PM–midnight basal went 0.47 -> 0.80 u/night and the carb-free evening rise fell from +45 to +32 (nights rising >60 mg/dL: 5/12 -> 2/12). KEEP the 9 PM start. The 9 PM–midnight block still reads 67% >180 only because dinner hands it off high — that is a dinner-ratio problem, not an evening one. Small hours are healthy and must be protected: 3–8 AM is 0% >180 at a median of 117, but 6 of 13 nights dipped below 80 (nadirs 67–81), so do NOT tighten anything that acts overnight.</td>
+            <td>Keep 9 PM sleep</td>
+            <td style="font-size:12px;">Values shown are the pump's 5 PM segment (1:26 / ISF 150 / target 130), which governs 9 PM–midnight. AFTER MIDNIGHT the pump switches to the 12 AM segment: ISF 90 and target 110, i.e. corrections become substantially stronger — a 2 AM correction using 150/130 will under-dose. Under-dosing is the safe direction, which is why the evening values are published here, but check the clock before correcting. 74 of the 77 events this period were corrections. Keep the 9 PM Sleep start. 9 PM–midnight still runs 57% of time above 180 (12–3 AM 27%), mostly dinner carrying over. The small hours dip: 7 of 27 nights went below 80 between 3:30 and 5:30 AM, and the Dexcom app shows 6 small overnight carb treatments since Oct 1. The dips follow evening manual corrections, not Control-IQ: nights with 1 u or more of manual corrections between 8 PM and 2 AM dipped below 80 on 4 of 7 nights vs 3 of 20 otherwise, while Control-IQ's overnight basal was the same (~1.2 u) on both. An evening correction rule is under review with the endo. Do NOT tighten anything that acts overnight.</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <p class="updated-badge">Updated September 20, 2026 &middot; Data from September 7–20</p>
+  <p class="updated-badge">Updated October 18, 2026 &middot; Data from September 21 – October 18</p>
 </div>
 
 <script>
 // Time-of-day profiles: ICR (g per unit) and ISF (mg/dL per unit)
 // Generated by build.py from profiles.json — do not edit directly.
 const profiles = {
-  breakfast:  { icr: 18, isf: 90, target: 110,  label: 'Breakfast (5-10 AM)' },
-  lunch:      { icr: 24, isf: 90, target: 110,  label: 'Lunch (10 AM-2 PM)', resistant: true },
+  breakfast:  { icr: 18, isf: 90, target: 110,  label: 'Breakfast (5-10 AM)', resistant: true },
+  lunch:      { icr: 20, isf: 90, target: 110,  label: 'Lunch (10 AM-2 PM)' },
   afternoon:  { icr: 18, isf: 140, target: 110,  label: 'Afternoon (2-5 PM)' },
   dinner:     { icr: 26, isf: 150, target: 130,  label: 'Dinner (5-9 PM)', resistant: true },
   night:      { icr: 26, isf: 150, target: 130,  label: 'Night (9 PM+)' }
